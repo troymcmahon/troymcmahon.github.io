@@ -182,9 +182,7 @@
            <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
                     PARASOL Lab
            </a>
-           
         </section>
-
 
         <!-- Research Profile -->
         <section class="research">
