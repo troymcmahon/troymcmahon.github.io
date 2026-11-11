@@ -131,14 +131,12 @@
 
 
                 <p>
-                    <strong>Email:</strong><br>
                     <a href="troymcmahon1@gmail.com">
                         troymcmahon1@gmail.com
                     </a>
                 </p>
 
                 <p>
-                    <strong>Website:</strong><br>
                     <a href="https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a>
                 </p>
                 <p>
