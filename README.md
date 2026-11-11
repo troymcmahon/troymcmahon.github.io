@@ -120,7 +120,7 @@
 
         <!-- Name -->
         <header>
-            <h1>Troy A. McMahon</h1>
+            <h1>Dr. Troy A. McMahon</h1>
         </header>
 
         <!-- Contact Information and Photo -->
@@ -207,7 +207,7 @@ Materials and Production, which was a graduate-level course designed to introduc
         </section>
         
         <!-- Bio -->
-        <section class="Short Bio">
+        <section class="research">
             <h2>Short Bio</h2>
             I am originally from Western Massachusetts and I received my undergraduate from the University of Massachusetts in Amherst where I double majored in Computer Science and Physics.  I received my Doctorate degree from Texas A&M University under the mentorship of Dr. Nancy Amato. I have done postdocs at institutions including The University of Michigan, Rutgers University and Aalborg University.  
         </section>
