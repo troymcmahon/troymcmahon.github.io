@@ -198,6 +198,26 @@ ICRA, and IROS, and I have led research projects and managed collaborations acro
 industrial institutions.
         </section>
 
+        <!-- Teaching Profile -->
+        <section class="research">
+            <h2>Teaching</h2>
+Robotics researcher specializing in motion planning for manipulators, constrained systems, and
+high-degree-of-freedom robots. My research develops novel concepts, including Reachable Volumes
+and Wayfields, that combine computational geometry and sampling-based planning for grasping
+and manipulation. I also integrate kinodynamic planning, machine learning, and physics-based
+simulation to develop planning methods for mobile manipulators, industrial robots, and off-road
+vehicles. I have collaborated with leading researchers including Nancy Amato, Kostas Bekris, Odest
+Jenkins, and Ole Madsen. My work has appeared in leading robotics venues, including IJRR,
+ICRA, and IROS, and I have led research projects and managed collaborations across academic and
+industrial institutions.
+        </section>
+        <!-- Bio -->
+        <section class="Short Bio">
+            <h2>Short Bio</h2>
+            I am originally from Western Massachusetts and I received my undergraduate from the University of Massachusetts in Amherst where I double majored in Computer Science and Physics.  I received my Doctorate degree from Texas A&M University under the mentorship of Dr. Nancy Amato. I have done postdocs at institutions including The University of Michigan, Rutgers University and Aalborg University.  
+        </section>
+        
+
     </main>
 
 </body>
