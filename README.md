@@ -127,15 +127,8 @@
         <section class="intro">
 
             <div class="contact">
-                <h2>Contact Information</h2>
-
                 <p><strong>Position:</strong> Postdoctoral Research Associate and Project Manager</p>
 
-                <p>
-                    <strong>Department:</strong><br>
-                    Department Name<br>
-                    University Name
-                </p>
 
                 <p>
                     <strong>Email:</strong><br>
@@ -145,14 +138,20 @@
                 </p>
 
                 <p>
-                    <strong>Office:</strong><br>
-                    Building Name, Room Number
+                    <strong>Website:</strong><br>
+                    <a href="https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a>
+                </p>
+                <p>
+                    <a href="CV.pdf">CV</a>
+                </p>
+                <p>
+                    <a href="ResearchStatement.pdf">Research Statement</a>
+                </p>
+                <p>
+                    <a href="TeachingStatement.pdf">Teaching Statement</a>
                 </p>
 
-                <p>
-                    <strong>Website:</strong><br>
-                    <a href="#">Google Scholar / Research Profile</a>
-                </p>
+
             </div>
 
             <div>
@@ -170,50 +169,19 @@
            links to all the labs I worked at
         </section>
 
-        
-        <!-- Documents -->
-        <section class="research">
-           CV, Research Statement, Teaching Statement
-        </section>
 
-        <!-- Research Interests -->
+        <!-- Research Profile -->
         <section class="research">
             <h2>Research Profile</h2>
-paragraph about research
-            <ul>
-                <li>Motion Planning</li>
-                <li>Grasping and Manipulation</li>
-                <li>Kinodynamic Planning</li>
-                <li>Task and Motion Planning</li>
-                <li>Industrial Automation</li>
-            </ul>
-        </section>
-
-        <!-- Teaching Interests -->
-        <section class="research">
-            <h2>Teaching Interests</h2>
-
-            <ul>
-                <li>Robotics</li>
-                <li>Artificial Intelligence</li>
-                <li>Computational Geometry</li>
-                <li>Algorithms</li>
-            </ul>
-        </section>
-
-        <!-- Teaching Interests -->
-        <section class="research">
-            <h2>Research Profile</h2>
-
-            <ul>
-Text goes here
-            </ul>
-        </section>
-
-        <!-- projects -->
-        <section class="research">
-            <h2>Projects</h2>
-Boxes go here
+Robotics researcher specializing in motion planning for manipulators, constrained systems, and
+high-degree-of-freedom robots. My research develops novel concepts, including Reachable Volumes
+and Wayfields, that combine computational geometry and sampling-based planning for grasping
+and manipulation. I also integrate kinodynamic planning, machine learning, and physics-based
+simulation to develop planning methods for mobile manipulators, industrial robots, and off-road
+vehicles. I have collaborated with leading researchers including Nancy Amato, Kostas Bekris, Odest
+Jenkins, and Ole Madsen. My work has appeared in leading robotics venues, including IJRR,
+ICRA, and IROS, and I have led research projects and managed collaborations across academic and
+industrial institutions.
         </section>
 
     </main>
