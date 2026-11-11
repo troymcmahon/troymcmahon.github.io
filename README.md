@@ -1,6 +1,3 @@
-# troymcmahon.github.io
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -123,7 +120,7 @@
 
         <!-- Name -->
         <header>
-            <h1>Your Name</h1>
+            <h1>Troy A. McMahon</h1>
         </header>
 
         <!-- Contact Information and Photo -->
@@ -142,8 +139,8 @@
 
                 <p>
                     <strong>Email:</strong><br>
-                    <a href="mailto:your.email@university.edu">
-                        your.email@university.edu
+                    <a href="troymcmahon1@gmail.com">
+                        troymcmahon1@gmail.com
                     </a>
                 </p>
 
