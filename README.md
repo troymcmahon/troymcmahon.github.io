@@ -201,15 +201,9 @@ industrial institutions.
         <!-- Teaching Profile -->
         <section class="research">
             <h2>Teaching</h2>
-Robotics researcher specializing in motion planning for manipulators, constrained systems, and
-high-degree-of-freedom robots. My research develops novel concepts, including Reachable Volumes
-and Wayfields, that combine computational geometry and sampling-based planning for grasping
-and manipulation. I also integrate kinodynamic planning, machine learning, and physics-based
-simulation to develop planning methods for mobile manipulators, industrial robots, and off-road
-vehicles. I have collaborated with leading researchers including Nancy Amato, Kostas Bekris, Odest
-Jenkins, and Ole Madsen. My work has appeared in leading robotics venues, including IJRR,
-ICRA, and IROS, and I have led research projects and managed collaborations across academic and
-industrial institutions.
+have served as the instructor of record for large core courses, such as the undergraduate course in Artificial Intelligence at Rutgers University (Introduction to Artificial Intelligence). This course enrolled more than 100 students
+and consisted of a combination of programming projects, exams, and written assignments.  During my time at Aalborg University, I was an instructor for the Reading in Robotics course at the Department of
+Materials and Production, which was a graduate-level course designed to introduce students to the research process. My goal for this course was to instill in students good research practices that they can carry into their own research,
         </section>
         <!-- Bio -->
         <section class="Short Bio">
