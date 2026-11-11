@@ -205,6 +205,7 @@ have served as the instructor of record for large core courses, such as the unde
 and consisted of a combination of programming projects, exams, and written assignments.  During my time at Aalborg University, I was an instructor for the Reading in Robotics course at the Department of
 Materials and Production, which was a graduate-level course designed to introduce students to the research process. My goal for this course was to instill in students good research practices that they can carry into their own research,
         </section>
+        
         <!-- Bio -->
         <section class="Short Bio">
             <h2>Short Bio</h2>
