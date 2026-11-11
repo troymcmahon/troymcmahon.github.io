@@ -173,11 +173,23 @@
             <h2>Research Interests</h2>
 
             <ul>
-                <li>Research Interest One</li>
-                <li>Research Interest Two</li>
-                <li>Research Interest Three</li>
-                <li>Research Interest Four</li>
-                <li>Research Interest Five</li>
+                <li>Motion Planning</li>
+                <li>Grasping and Manipulation</li>
+                <li>Kinodynamic Planning</li>
+                <li>Task and Motion Planning</li>
+                <li>Industrial Automation</li>
+            </ul>
+        </section>
+
+        <!-- Teaching Interests -->
+        <section class="research">
+            <h2>Teaching Interests</h2>
+
+            <ul>
+                <li>Robotics</li>
+                <li>Artificial Intelligence</li>
+                <li>Computational Geometry</li>
+                <li>Algorithms</li>
             </ul>
         </section>
 
