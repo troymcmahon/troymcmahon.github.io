@@ -170,7 +170,7 @@
 
         <!-- Research Profile -->
         <section class="research">
-            <h2>Research Profile</h2>
+            <h2>Research</h2>
 Robotics researcher specializing in motion planning for manipulators, constrained systems, and
 high-degree-of-freedom robots. My research develops novel concepts, including Reachable Volumes
 and Wayfields, that combine computational geometry and sampling-based planning for grasping
