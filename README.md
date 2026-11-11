@@ -165,10 +165,21 @@
 
         </section>
 
+        <!-- Projects -->
+        <section class="research">
+           links to all the labs I worked at
+        </section>
+
+        
+        <!-- Documents -->
+        <section class="research">
+           CV, Research Statement, Teaching Statement
+        </section>
+
         <!-- Research Interests -->
         <section class="research">
-            <h2>Research Interests</h2>
-
+            <h2>Research Profile</h2>
+paragraph about research
             <ul>
                 <li>Motion Planning</li>
                 <li>Grasping and Manipulation</li>
@@ -188,6 +199,21 @@
                 <li>Computational Geometry</li>
                 <li>Algorithms</li>
             </ul>
+        </section>
+
+        <!-- Teaching Interests -->
+        <section class="research">
+            <h2>Research Profile</h2>
+
+            <ul>
+Text goes here
+            </ul>
+        </section>
+
+        <!-- projects -->
+        <section class="research">
+            <h2>Projects</h2>
+Boxes go here
         </section>
 
     </main>
