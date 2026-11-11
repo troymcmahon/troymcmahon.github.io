@@ -164,7 +164,24 @@
 
         <!-- Projects -->
         <section class="research">
-           links to all the labs I worked at
+           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+                    5G Robot
+           </a>
+           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+                    PRACSYS Lab
+           </a>           
+           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+                    DIMACS
+           </a>
+           
+           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+                    Laboratory for Progress
+           </a>
+           
+           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+                    PARASOL Lab
+           </a>
+           
         </section>
 
 
