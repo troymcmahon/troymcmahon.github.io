@@ -164,6 +164,7 @@
 
         <!-- Projects -->
         <section class="research">
+           <b>Previous Affiliations:</b>
            <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
                     5G Robot
            </a>
