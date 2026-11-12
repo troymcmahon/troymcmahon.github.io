@@ -168,18 +168,18 @@
            <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
                     5G Robot
            </a>
-           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+           <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://pracsys.cs.rutgers.edu/&ved=2ahUKEwiWrL-Qi4OYAxW5l2oFHcEnN7oQFnoECA8QAQ&usg=AOvVaw0XgRc5z0-YC9tH05Nv-rKi">
                     PRACSYS Lab
            </a>           
-           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+           <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://dimacs.rutgers.edu/&ved=2ahUKEwjnzbXBi4OYAxW3lmoFHZr3A0IQFnoECCsQAQ&usg=AOvVaw1RSmznDaMB2rpoPQdQn1Mo">
                     DIMACS
            </a>
            
-           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+           <a href="https://progresslab.github.io/progress-web/index.html">
                     Laboratory for Progress
            </a>
            
-           <a href="https://www.5gsmartproduction.aau.dk/5g-robot">
+           <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://parasollab.web.illinois.edu/&ved=2ahUKEwj6xbLwioOYAxXHl2oFHWyyMPsQFnoECA8QAQ&usg=AOvVaw1ROSbKomTQ_7XbR7hA8864">
                     PARASOL Lab
            </a>
         </section>
