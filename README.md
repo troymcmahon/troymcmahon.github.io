@@ -19,8 +19,8 @@
         }
 
         .container {
-            max-width: 1000px;
-            margin: 50px auto;
+            max-width: 1200px;
+            margin: 30px auto;
             padding: 40px;
             background: white;
         }
