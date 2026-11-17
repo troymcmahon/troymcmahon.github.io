@@ -163,7 +163,55 @@
 
     </div>
 
-</section>
+</section><table width="100%" cellpadding="20">
+    <tr>
+        <!-- Profile Photo -->
+        <td width="30%" valign="top">
+            <img src="images/profile.jpg"
+                 alt="Troy McMahon"
+                 width="250">
+        </td>
+
+        <!-- Introduction -->
+        <td width="70%" valign="top">
+
+            <h1>Troy A. McMahon</h1>
+
+            <h2>Robotics Researcher</h2>
+
+            <p>
+                I am a robotics researcher specializing in motion
+                planning for manipulators, constrained systems,
+                and high-degree-of-freedom robots.
+            </p>
+
+            <p>
+                My research focuses on sampling-based motion planning,
+                kinodynamic planning, computational geometry, and
+                robotic manipulation. I develop algorithms and
+                computational techniques for complex robotic systems,
+                with applications in industrial automation,
+                mobile manipulation, and autonomous vehicles.
+            </p>
+
+            <p>
+                <b>Research Interests:</b>
+                Motion Planning |
+                Robotic Manipulation |
+                Kinodynamic Planning |
+                Industrial Robotics
+            </p>
+
+            <p>
+                <a href="YOUR_CV_URL">CV</a> |
+                <a href="YOUR_GOOGLE_SCHOLAR_URL">Google Scholar</a> |
+                <a href="YOUR_GITHUB_URL">GitHub</a> |
+                <a href="mailto:YOUR_EMAIL">Email</a>
+            </p>
+
+        </td>
+    </tr>
+</table>
         
 
         <!-- Projects -->
