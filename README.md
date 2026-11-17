@@ -119,14 +119,55 @@
     <main class="container">
 
         <!-- Name -->
-        <header>
-            <h1>Dr. Troy A. McMahon</h1>
-        </header>
+
 
         <!-- Contact Information and Photo -->
-        <section class="intro">
+<section id="intro">
 
-            <div class="contact">
+    <div class="intro-image">
+        <img src="Troy_McMahon.jpg" alt="Troy McMahon">
+    </div>
+
+    <div class="intro-content">
+
+        <h1>Troy A. McMahon</h1>
+
+        <h2>Robotics Researcher</h2>
+
+        <p>
+            I am a robotics researcher specializing in motion planning
+            for manipulators, constrained systems, and high-degree-of-
+            freedom robots.
+        </p>
+
+        <p>
+            My research focuses on sampling-based motion planning,
+            kinodynamic planning, computational geometry, and robotic
+            manipulation. I develop algorithms and computational
+            techniques for complex robotic systems, with applications
+            in industrial automation, mobile manipulation, and
+            autonomous vehicles.
+        </p>
+
+        <div class="research-tags">
+            <span>Motion Planning</span>
+            <span>Robotic Manipulation</span>
+            <span>Kinodynamic Planning</span>
+            <span>Industrial Robotics</span>
+        </div>
+
+        <div class="intro-links">
+            <a href="YOUR_CV_URL">CV</a>
+            <a href="YOUR_GOOGLE_SCHOLAR_URL">Google Scholar</a>
+            <a href="YOUR_GITHUB_URL">GitHub</a>
+            <a href="mailto:YOUR_EMAIL">Email</a>
+        </div>
+
+    </div>
+
+</section>
+        
+        <section class="intro">
                 <p><strong>Position:</strong> Postdoctoral Research Associate and Project Manager</p>
 
 
@@ -148,18 +189,6 @@
                 <p>
                     <a href="TeachingStatement.pdf">Teaching Statement</a>
                 </p>
-
-
-            </div>
-
-            <div>
-                <img
-                    src="Troy_McMahon.jpg"
-                    alt="Profile photograph"
-                    class="profile-photo"
-                >
-            </div>
-
         </section>
 
         <!-- Projects -->
