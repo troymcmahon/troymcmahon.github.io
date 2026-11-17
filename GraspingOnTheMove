@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grasping on the Move | Troy McMahon</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            margin: 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 25px;
+            background: white;
+        }
+
+        h1 {
+            font-size: 2.3em;
+            color: #183153;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #183153;
+            border-bottom: 2px solid #e5e9ef;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #31577e;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .metadata {
+            color: #666;
+            font-size: 0.9em;
+            margin: 20px 0;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+            margin: 20px 0;
+        }
+
+        figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .highlight {
+            background: #f0f4f8;
+            border-left: 4px solid #31577e;
+            padding: 18px 22px;
+            margin: 25px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 25px 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .architecture {
+            background: #f5f7fa;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .architecture ul {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: #286090;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            border-top: 1px solid #ddd;
+            margin-top: 50px;
+            padding-top: 20px;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Grasping on the Move</h1>
+
+        <p class="subtitle">
+            Motion Planning and Visual Servoing for Mobile Manipulation
+        </p>
+
+        <div class="metadata">
+            <strong>Research Areas:</strong>
+            Robotics, Mobile Manipulation, Motion Planning,
+            Visual Servoing, Industrial Automation
+        </div>
+    </header>
+
+
+    <!-- Project Overview Image -->
+
+    <figure>
+        <img class="hero-image"
+             src="images/grasping-on-the-move.png"
+             alt="Mobile manipulator performing grasping on the move">
+        <figcaption>
+            Grasping on the move in an industrial kitting environment.
+        </figcaption>
+    </figure>
+
+
+    <!-- Overview -->
+
+    <section>
+
+        <h2>Overview</h2>
+
+        <p>
+            Traditional robotic pick-and-place operations typically
+            require a mobile robot to stop and localize itself before
+            performing a manipulation task. This introduces additional
+            delays and reduces the efficiency of mobile manipulation
+            systems, particularly in industrial environments where
+            robots must perform repeated picking and placement operations.
+        </p>
+
+        <p>
+            This research investigates <strong>grasping on the move</strong>,
+            enabling mobile manipulators to identify, approach, and grasp
+            objects while their mobile base remains in motion.
+            By combining motion planning, visual perception, and
+            coordinated control of the robot's base and arm, the
+            framework eliminates the need to stop before performing
+            pick-and-place operations.
+        </p>
+
+        <div class="highlight">
+            <strong>Research Objective:</strong>
+            Develop an integrated planning and control architecture
+            that enables mobile manipulators to reliably identify and
+            grasp objects while their base is undergoing dynamic motion.
+        </div>
+
+    </section>
+
+
+    <!-- Challenges -->
+
+    <section>
+
+        <h2>Research Challenges</h2>
+
+        <p>
+            Grasping objects while a mobile manipulator is moving
+            introduces several challenges beyond those encountered
+            in traditional stationary manipulation.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Precision:</strong>
+                The manipulator must accurately position its end
+                effector to successfully grasp an object.
+            </li>
+
+            <li>
+                <strong>Timing:</strong>
+                The arm must intercept and grasp the object as the
+                mobile base passes within reach.
+            </li>
+
+            <li>
+                <strong>Motion uncertainty:</strong>
+                The system must accommodate noise and uncertainty
+                associated with movement of the mobile base.
+            </li>
+
+            <li>
+                <strong>Environmental changes:</strong>
+                The robot must adapt to changes in object location
+                and its surrounding environment.
+            </li>
+
+            <li>
+                <strong>Planning efficiency:</strong>
+                Planning and execution must be sufficiently fast
+                to support efficient industrial operation.
+            </li>
+        </ul>
+
+    </section>
+
+
+    <!-- Architecture -->
+
+    <section>
+
+        <h2>System Architecture</h2>
+
+        <p>
+            The proposed framework integrates planning and control
+            for both the mobile base and manipulator, together with
+            a vision-based object detection system.
+            These components work together to identify target objects,
+            navigate toward them, and execute grasping motions while
+            the robot remains in motion.
+        </p>
+
+        <div class="architecture">
+
+            <h3>1. Mobile Base Planning and Control</h3>
+
+            <p>
+                The base planner and controller use LiDAR sensors
+                to navigate the work environment. The system generates
+                paths that bring the mobile manipulator within
+                reachable distance of objects that need to be grasped.
+            </p>
+
+            <h3>2. Vision-Based Object Detection</h3>
+
+            <p>
+                A camera mounted on the robotic arm identifies and
+                localizes target objects. This provides the object
+                position information needed to plan the grasping motion.
+            </p>
+
+            <h3>3. Arm Planning and Control</h3>
+
+            <p>
+                The arm planner and controller incorporate both
+                the motion of the mobile base and the estimated
+                object location to generate and execute grasping
+                motions.
+            </p>
+
+        </div>
+
+        <figure>
+            <img src="images/grasping-architecture.png"
+                 alt="Architecture of the grasping on the move system">
+            <figcaption>
+                System architecture showing coordination between
+                mobile base planning, object detection, and arm planning.
+            </figcaption>
+        </figure>
+
+    </section>
+
+
+    <!-- Experimental Platform -->
+
+    <section>
+
+        <h2>Experimental Platform</h2>
+
+        <p>
+            The framework was implemented and evaluated using a
+            mobile manipulator consisting of a
+            <strong>Universal Robots UR5 robotic arm</strong>
+            mounted on a
+            <strong>Mobile Industrial Robots (MiR) mobile base</strong>.
+        </p>
+
+        <p>
+            The system was demonstrated on kitting tasks in an
+            industrial environment. These experiments evaluated
+            the ability of the mobile manipulator to identify
+            and grasp target objects while its base was undergoing
+            dynamic motion.
+        </p>
+
+        <figure>
+            <img src="images/grasping-platform.png"
+                 alt="UR5 robotic arm mounted on MiR mobile base">
+            <figcaption>
+                Experimental mobile manipulation platform:
+                UR5 robotic arm mounted on a MiR mobile base.
+            </figcaption>
+        </figure>
+
+    </section>
+
+
+    <!-- Results -->
+
+    <section>
+
+        <h2>Results and Demonstrations</h2>
+
+        <p>
+            Experimental demonstrations show that the proposed
+            framework can consistently identify and grasp target
+            objects while the mobile base is moving.
+            The results demonstrate the feasibility of performing
+            manipulation tasks without requiring the robot to
+            stop before grasping.
+        </p>
+
+        <figure>
+            <img src="images/grasping-kitting.png"
+                 alt="Mobile manipulator performing an industrial kitting task">
+            <figcaption>
+                Demonstration of grasping on the move during
+                an industrial kitting task.
+            </figcaption>
+        </figure>
+
+        <h3>Video Demonstration</h3>
+
+        <p>
+            Demonstration of the mobile manipulator performing
+            grasping operations while navigating its environment.
+        </p>
+
+        <div class="video-container">
+
+            <!-- Replace VIDEO_ID with your YouTube video ID -->
+
+            <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID"
+                title="Grasping on the Move Demonstration"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </section>
+
+
+    <!-- Future Work -->
+
+    <section>
+
+        <h2>Future Research Directions</h2>
+
+        <p>
+            An important direction for extending this work is
+            incorporating visual servoing into the arm control
+            framework. Visual servoing will allow the manipulator
+            to continuously adapt its motion based on visual
+            observations while accounting for movement of the
+            mobile base.
+        </p>
+
+        <p>
+            I also plan to incorporate kinodynamic planning into
+            grasping on the move. This will help ensure that
+            trajectories generated through visual servoing
+            remain collision-free while accounting for the
+            dynamics of the system.
+        </p>
+
+        <p>
+            These developments will extend the existing framework
+            to better accommodate uncertainty and improve the
+            reliability of grasping operations in dynamic
+            environments.
+        </p>
+
+    </section>
+
+
+    <!-- Applications -->
+
+    <section>
+
+        <h2>Applications</h2>
+
+        <p>
+            Grasping on the move has potential applications
+            across several areas of robotics, including:
+        </p>
+
+        <ul>
+            <li>Industrial automation and manufacturing</li>
+            <li>Automated kitting and material handling</li>
+            <li>Warehouse and logistics automation</li>
+            <li>Home robotics</li>
+            <li>Search and rescue robotics</li>
+            <li>Space exploration</li>
+        </ul>
+
+    </section>
+
+
+    <!-- Publications -->
+
+    <section>
+
+        <h2>Publications</h2>
+
+        <p>
+            Add publications associated with this project here.
+        </p>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            <a href="index.html">Back to Home</a> |
+            <a href="research.html">Research</a> |
+            <a href="reachable-volumes.html">Reachable Volumes</a>
+        </p>
+
+        <p>
+            Troy A. McMahon | Robotics Research
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
