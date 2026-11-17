@@ -253,11 +253,7 @@ Materials and Production, which was a graduate-level course designed to introduc
         <td>
         
         </td>
-    <tr>
-</table>
+    </tr>
+</table> </main> </body> </html> 
 
 
-    </main>
-
-</body>
-</html>
