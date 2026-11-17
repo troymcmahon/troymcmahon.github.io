@@ -119,55 +119,12 @@
 <main class="container">
 
 
-  <!-- Contact Information and Photo -->
-  <section id="intro">
 
-    <div class="intro-image">
-        <img src="Troy_McMahon.jpg" alt="Troy McMahon">
-    </div>
-    <div class="intro-content">
-
-        <h1>Troy A. McMahon</h1>
-
-        <h2>Robotics Researcher</h2>
-
-        <p>
-            I am a robotics researcher specializing in motion planning
-            for manipulators, constrained systems, and high-degree-of-
-            freedom robots.
-        </p>
-
-        <p>
-            My research focuses on sampling-based motion planning,
-            kinodynamic planning, computational geometry, and robotic
-            manipulation. I develop algorithms and computational
-            techniques for complex robotic systems, with applications
-            in industrial automation, mobile manipulation, and
-            autonomous vehicles.
-        </p>
-
-        <div class="research-tags">
-            <span>Motion Planning</span>
-            <span>Robotic Manipulation</span>
-            <span>Kinodynamic Planning</span>
-            <span>Industrial Robotics</span>
-        </div>
-
-        <div class="intro-links">
-            <a href="CV.pdf">CV</a>
-            <a href="ResearchStatement.pdf">Research Statement</a>
-            <a href="TeachingStatement.pdf">Teaching Statement</a>
-            <a href="[YOUR_GOOGLE_SCHOLAR_URL">Google Scholar](https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a>
-            <a href="mailto:troymcmahon1@gmail.com">Email</a>
-        </div>
-
-    </div>
-
-</section><table width="100%" cellpadding="20">
+<table>
     <tr>
         <!-- Profile Photo -->
         <td width="30%" valign="top">
-            <img src="images/profile.jpg"
+            <img src="Troy_McMahon.jpg"
                  alt="Troy McMahon"
                  width="250">
         </td>
@@ -203,10 +160,11 @@
             </p>
 
             <p>
-                <a href="YOUR_CV_URL">CV</a> |
-                <a href="YOUR_GOOGLE_SCHOLAR_URL">Google Scholar</a> |
-                <a href="YOUR_GITHUB_URL">GitHub</a> |
-                <a href="mailto:YOUR_EMAIL">Email</a>
+            <a href="CV.pdf">CV</a>
+            <a href="ResearchStatement.pdf">Research Statement</a>
+            <a href="TeachingStatement.pdf">Teaching Statement</a>
+            <a href="[YOUR_GOOGLE_SCHOLAR_URL">Google Scholar](https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a>
+            <a href="mailto:troymcmahon1@gmail.com">Email</a>
             </p>
 
         </td>
