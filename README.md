@@ -126,7 +126,7 @@
         <td width="50%" valign="top">
             <img src="Troy_McMahon.jpg"
                  alt="Troy McMahon"
-                 width="250">
+                 width="450">
         </td>
 
         <!-- Introduction -->
