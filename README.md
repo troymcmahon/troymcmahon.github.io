@@ -132,7 +132,7 @@
         <!-- Introduction -->
         <td width="70%" valign="top">
 
-            <h1>Troy A. McMahon</h1>
+            <h1>Dr. Troy A. McMahon</h1>
 
             <h2>Robotics Researcher</h2>
 
