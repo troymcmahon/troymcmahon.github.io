@@ -160,11 +160,11 @@
             </p>
 
             <p>
-            <a href="CV.pdf">CV</a>
-            <a href="ResearchStatement.pdf">Research Statement</a>
-            <a href="TeachingStatement.pdf">Teaching Statement</a>
-            <a href="[YOUR_GOOGLE_SCHOLAR_URL">Google Scholar](https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a>
-            <a href="mailto:troymcmahon1@gmail.com">Email</a>
+            <a href="CV.pdf">CV</a><br>
+            <a href="ResearchStatement.pdf">Research Statement</a><br>
+            <a href="TeachingStatement.pdf">Teaching Statement</a><br>
+            <a href="https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a><br>
+            <a href="mailto:troymcmahon1@gmail.com">Email</a><br>
             </p>
 
         </td>
