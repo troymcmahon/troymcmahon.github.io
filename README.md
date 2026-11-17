@@ -241,17 +241,17 @@ Materials and Production, which was a graduate-level course designed to introduc
             <h2>Off-road robots</h2>
         </td>
         <td>
-            <img src="image4.jpg" alt="drawer.jpg" width="200">
+            <img src="drawer.jpg" alt="Image 4" width="200">
             <h2>Wayfields for task an motion planning</h2>
         </td>
-    </tr>
-        
+    </tr>        
     <tr>
         <td>
-            <img src="LocalRand.jpg" alt="Image 3" width="200">
+            <img src="LocalRand.jpg" alt="Image 5" width="200">
             <h2>Motion planning fundamentals</h2>
         </td>
         <td>
+        
         </td>
     <tr>
 </table>
