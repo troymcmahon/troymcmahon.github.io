@@ -157,39 +157,17 @@
         </div>
 
         <div class="intro-links">
-            <a href="YOUR_CV_URL">CV</a>
-            <a href="YOUR_GOOGLE_SCHOLAR_URL">Google Scholar</a>
-            <a href="YOUR_GITHUB_URL">GitHub</a>
-            <a href="mailto:YOUR_EMAIL">Email</a>
+            <a href="CV.pdf">CV</a>
+            <a href="ResearchStatement.pdf">Research Statement</a>
+            <a href="TeachingStatement.pdf">Teaching Statement</a>
+            <a href="[YOUR_GOOGLE_SCHOLAR_URL">Google Scholar](https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a>
+            <a href="mailto:troymcmahon1@gmail.com">Email</a>
         </div>
 
     </div>
 
 </section>
         
-        <section class="intro">
-                <p><strong>Position:</strong> Postdoctoral Research Associate and Project Manager</p>
-
-
-                <p>
-                    <a href="troymcmahon1@gmail.com">
-                        troymcmahon1@gmail.com
-                    </a>
-                </p>
-
-                <p>
-                    <a href="https://scholar.google.com/citations?user=gG43f88AAAAJ&hl=en">Research Profile</a>
-                </p>
-                <p>
-                    <a href="CV.pdf">CV</a>
-                </p>
-                <p>
-                    <a href="ResearchStatement.pdf">Research Statement</a>
-                </p>
-                <p>
-                    <a href="TeachingStatement.pdf">Teaching Statement</a>
-                </p>
-        </section>
 
         <!-- Projects -->
         <section class="research">
