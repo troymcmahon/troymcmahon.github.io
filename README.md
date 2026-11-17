@@ -123,14 +123,14 @@
 <table>
     <tr>
         <!-- Profile Photo -->
-        <td width="30%" valign="top">
+        <td width="50%" valign="top">
             <img src="Troy_McMahon.jpg"
                  alt="Troy McMahon"
                  width="250">
         </td>
 
         <!-- Introduction -->
-        <td width="70%" valign="top">
+        <td width="50%" valign="top">
 
             <h1>Dr. Troy A. McMahon</h1>
 
