@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reachable Volumes | Troy McMahon</title>
+</head>
+
+<body>
+
+    <main>
+
+        <h1>Reachable Volumes for Robotic Manipulation</h1>
+
+        <p>
+            <strong>Research Area:</strong>
+            Robotics, Motion Planning, Computational Geometry
+        </p>
+
+        <hr>
+
+        <h2>Overview</h2>
+
+        <p>
+            Robotic manipulation requires determining whether a robot
+            can reach a desired position and orientation while satisfying
+            its kinematic constraints. This becomes particularly
+            challenging for robots with many degrees of freedom, where
+            traditional approaches to reachability analysis can become
+            computationally expensive.
+        </p>
+
+        <p>
+            My research on <strong>Reachable Volumes</strong> investigates
+            geometric representations of robot reachability to facilitate
+            efficient motion planning for manipulation tasks. By combining
+            computational geometry with sampling-based planning, this
+            approach provides tools for reasoning about the configurations
+            and workspace regions accessible to a robotic manipulator.
+        </p>
+
+        <h2>Research Objectives</h2>
+
+        <ul>
+            <li>
+                Develop efficient geometric representations of robotic
+                reachability.
+            </li>
+            <li>
+                Improve motion planning for high-degree-of-freedom
+                robotic manipulators.
+            </li>
+            <li>
+                Support grasp planning and manipulation through
+                reachability analysis.
+            </li>
+            <li>
+                Integrate reachability representations with
+                sampling-based motion planning algorithms.
+            </li>
+        </ul>
+
+        <h2>Approach</h2>
+
+        <p>
+            Reachable Volumes explores the relationship between a
+            robot's configuration space and its reachable workspace.
+            Geometric representations of reachable regions can help
+            identify feasible manipulation configurations and reduce
+            the computational effort required during planning.
+        </p>
+
+        <p>
+            This research combines computational geometry and
+            sampling-based planning to address the challenges of
+            planning for complex robotic systems.
+        </p>
+
+        <h2>Applications</h2>
+
+        <ul>
+            <li>Robotic grasp planning</li>
+            <li>Industrial robotic manipulation</li>
+            <li>High-degree-of-freedom robotic systems</li>
+            <li>Motion planning for constrained manipulators</li>
+        </ul>
+
+        <h2>Results and Demonstrations</h2>
+
+        <p>
+            Add figures and videos demonstrating the Reachable Volumes
+            representation and its application to robotic manipulation.
+        </p>
+
+        <figure>
+            <img src="images/reachable-volumes-overview.png"
+                 alt="Visualization of robotic reachable volumes"
+                 width="700">
+            <figcaption>
+                Visualization of reachable volumes for robotic manipulation.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="images/reachable-volumes-example.png"
+                 alt="Example of reachable volume computation"
+                 width="700">
+            <figcaption>
+                Example of reachability analysis.
+            </figcaption>
+        </figure>
+
+        <h2>Publications</h2>
+
+        <ul>
+            <li>
+                Add publications related to Reachable Volumes here.
+            </li>
+        </ul>
+
+        <h2>Related Research</h2>
+
+        <p>
+            <a href="wayfield.html">Wayfield</a> |
+            <a href="index.html">Back to Home</a>
+        </p>
+
+    </main>
+
+</body>
+</html>
