@@ -221,7 +221,41 @@ Materials and Production, which was a graduate-level course designed to introduc
             <h2>Short Bio</h2>
             I am originally from Western Massachusetts and I received my undergraduate from the University of Massachusetts in Amherst where I double majored in Computer Science and Physics.  I received my Doctorate degree from Texas A&M University under the mentorship of Dr. Nancy Amato. I have done postdocs at institutions including The University of Michigan, Rutgers University and Aalborg University.  
         </section>
+
+<section class="research">
+  <h2>Projects</h2>        
+    <table border="1" cellpadding="10" cellspacing="0">
+      <tr>
+        <td>
+            <img src="rv_wam_with_labels.png" alt="Image 1" width="200">
+            <h2>Reachable Volumes</h2>
+        </td>
+        <td>
+            <img src="kitting_cell.png" alt="Image 2" width="200">
+            <h2>Grasping on the move</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="robot_at_start_no_path.png" alt="Image 3" width="200">
+            <h2>Off-road robots</h2>
+        </td>
+        <td>
+            <img src="image4.jpg" alt="drawer.jpg" width="200">
+            <h2>Wayfields for task an motion planning</h2>
+        </td>
+    </tr>
         
+    <tr>
+        <td>
+            <img src="LocalRand.jpg" alt="Image 3" width="200">
+            <h2>Motion planning fundamentals</h2>
+        </td>
+        <td>
+        </td>
+    <tr>
+</table>
+
 
     </main>
 
