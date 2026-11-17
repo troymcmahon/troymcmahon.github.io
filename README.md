@@ -116,18 +116,15 @@
 
 <body>
 
-    <main class="container">
-
-        <!-- Name -->
+<main class="container">
 
 
-        <!-- Contact Information and Photo -->
-<section id="intro">
+  <!-- Contact Information and Photo -->
+  <section id="intro">
 
     <div class="intro-image">
         <img src="Troy_McMahon.jpg" alt="Troy McMahon">
     </div>
-
     <div class="intro-content">
 
         <h1>Troy A. McMahon</h1>
