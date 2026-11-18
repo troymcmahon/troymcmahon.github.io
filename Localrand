@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalRand | Robotics Research</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 25px;
+        }
+
+        h1 {
+            font-size: 2.3em;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin-top: 45px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+            color: #222;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            margin-top: 25px;
+            color: #333;
+        }
+
+        .authors {
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+
+        .publication {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .links {
+            margin: 25px 0;
+        }
+
+        .links a {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 8px 15px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .links a:hover {
+            background-color: #ddd;
+        }
+
+        .figure {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .figure img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .caption {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .highlight {
+            background-color: #f7f7f7;
+            border-left: 4px solid #555;
+            padding: 15px 20px;
+            margin: 25px 0;
+        }
+
+        .comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .comparison-item {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .comparison-item h3 {
+            margin-top: 0;
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+
+        .results-image {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Local Randomization in Neighbor Selection Improves PRM Roadmap Quality</h1>
+
+    <p class="authors">
+        <strong>Troy McMahon</strong>, Sam Jacobs, Bryan Boyd,
+        Lydia Tapia, and Nancy M. Amato
+    </p>
+
+    <p class="publication">
+        IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2012
+    </p>
+
+    <div class="links">
+        <a href="papers/localrand.pdf">Paper</a>
+    </div>
+
+    <h2>Overview</h2>
+
+    <p>
+        Probabilistic Roadmap Methods (PRMs) are widely used for robot motion
+        planning in high-dimensional configuration spaces. A critical component
+        of roadmap construction is selecting candidate neighbors for each
+        configuration. Traditionally, PRMs connect each configuration to its
+        nearest neighbors according to a distance metric.
+    </p>
+
+    <p>
+        While selecting the closest configurations tends to produce connections
+        that are easier to validate, this strategy can result in redundant
+        connection attempts and roadmaps with limited connectivity. Conversely,
+        selecting neighbors entirely at random can introduce longer connections,
+        but these connections may be difficult to validate and can reduce
+        roadmap quality.
+    </p>
+
+    <p>
+        This work introduces <strong>LocalRand</strong>, a neighbor-selection
+        strategy that combines the benefits of local neighborhood selection
+        with randomization. LocalRand first identifies a larger set of nearby
+        configurations and then randomly selects a subset of those
+        configurations as connection candidates.
+    </p>
+
+    <div class="highlight">
+        <strong>Key idea:</strong>
+        Instead of always connecting to the nearest configurations, introduce
+        controlled randomness within a local neighborhood. This encourages
+        connections to a more diverse set of configurations while retaining
+        the advantages of local neighbor selection.
+    </div>
+
+    <h2>LocalRand</h2>
+
+    <p>
+        Given a configuration and two parameters, <em>k</em> and
+        <em>k'</em>, LocalRand identifies the <em>k'</em> closest
+        configurations and randomly selects <em>k</em> of them for connection.
+        The parameter <em>k</em> controls the number of neighbors selected,
+        while <em>k'</em> controls the size of the neighborhood from which
+        those neighbors are selected.
+    </p>
+
+    <div class="figure">
+        <img src="images/localrand-illustration.png"
+             alt="Illustration of LocalRand neighbor selection">
+        <p class="caption">
+            Illustration of local randomized neighbor selection.
+            A local neighborhood is identified, and a random subset of
+            configurations is selected for connection.
+        </p>
+    </div>
+
+    <p>
+        By varying <em>k'</em>, LocalRand interpolates between two
+        conventional strategies:
+    </p>
+
+    <div class="comparison">
+
+        <div class="comparison-item">
+            <h3>k-Closest</h3>
+
+            <p>
+                When <em>k' = k</em>, LocalRand is equivalent to the
+                conventional nearest-neighbor strategy. The closest
+                configurations are always selected.
+            </p>
+        </div>
+
+        <div class="comparison-item">
+            <h3>k-Random</h3>
+
+            <p>
+                When the candidate neighborhood includes all configurations,
+                LocalRand becomes equivalent to selecting neighbors randomly
+                from the entire roadmap.
+            </p>
+        </div>
+
+        <div class="comparison-item">
+            <h3>LocalRand</h3>
+
+            <p>
+                Intermediate values of <em>k'</em> provide controlled
+                randomization within a local neighborhood, allowing the
+                planner to balance connection distance and roadmap diversity.
+            </p>
+        </div>
+
+    </div>
+
+    <h2>Experimental Evaluation</h2>
+
+    <p>
+        LocalRand was evaluated across a variety of motion-planning
+        environments involving both rigid-body robots and articulated
+        linkages. The experiments examined how neighbor-selection policies
+        affect roadmap connectivity, the number of edges generated,
+        local-planner success, and computational cost.
+    </p>
+
+    <p>
+        The study included environments ranging from relatively free
+        configuration spaces to challenging narrow passages and cluttered
+        environments. Experiments were conducted with robots of varying
+        dimensionality, including articulated linkages with up to 32 degrees
+        of freedom.
+    </p>
+
+    <div class="figure">
+        <img src="images/localrand-environments.png"
+             alt="Motion planning environments used in the LocalRand experiments">
+        <p class="caption">
+            Representative environments used to evaluate LocalRand,
+            including free-space, narrow-passage, cluttered, and articulated
+            robot planning problems.
+        </p>
+    </div>
+
+    <h3>Roadmap Quality</h3>
+
+    <p>
+        The experimental evaluation compared LocalRand against conventional
+        k-closest and k-random neighbor-selection strategies. Roadmap quality
+        was evaluated using the number of generated edges, normalized
+        connectivity, and other structural metrics.
+    </p>
+
+    <div class="figure">
+        <img src="images/localrand-results.png"
+             alt="Experimental results comparing LocalRand with k-closest and k-random">
+        <p class="caption">
+            Comparison of roadmap metrics for LocalRand, k-closest, and
+            k-random neighbor-selection strategies.
+        </p>
+    </div>
+
+    <p>
+        The results showed that LocalRand can produce roadmaps with greater
+        connectivity and more edges than conventional k-closest selection
+        while maintaining computational costs comparable to the traditional
+        strategy. The benefits were particularly apparent in environments
+        where longer connections were more likely to be successfully
+        validated.
+    </p>
+
+    <h3>Parameter Selection</h3>
+
+    <p>
+        The performance of LocalRand depends on the size of the neighborhood
+        from which random connections are selected. The paper presents a
+        methodology for choosing <em>k'</em> based on the characteristics
+        of the planning environment and the number of desired connections.
+    </p>
+
+    <p>
+        The experimental results suggest that selecting a neighborhood
+        approximately two to three times larger than the number of desired
+        neighbors can be beneficial for difficult environments, while
+        relatively unconstrained environments may benefit from a larger
+        neighborhood.
+    </p>
+
+    <h2>Impact</h2>
+
+    <p>
+        LocalRand demonstrates that the neighbor-selection strategy used
+        during roadmap construction can have a significant effect on
+        connectivity and overall roadmap quality. By introducing
+        randomization into local neighbor selection, the approach reduces
+        some of the redundancy inherent in nearest-neighbor strategies and
+        encourages the exploration of connections that may improve the
+        structure of the roadmap.
+    </p>
+
+    <p>
+        This work highlights the importance of balancing locality and
+        randomness in sampling-based motion planning and provides a
+        practical approach for improving PRM roadmap construction across
+        a range of robot types and planning environments.
+    </p>
+
+    <h2>Publication</h2>
+
+    <p>
+        Troy McMahon, Sam Jacobs, Bryan Boyd, Lydia Tapia, and Nancy M. Amato.
+        <em>Local Randomization in Neighbor Selection Improves PRM Roadmap Quality.</em>
+        IEEE/RSJ International Conference on Intelligent Robots and Systems
+        (IROS), 2012.
+    </p>
+
+    <p>
+        <a href="papers/localrand.pdf">Download the paper (PDF)</a>
+    </p>
+
+</div>
+
+</body>
+</html>
