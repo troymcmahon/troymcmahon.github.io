@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Affordance Wayfields | Troy McMahon</title>
+
+<style>
+    :root {
+        --primary: #1d3557;
+        --secondary: #457b9d;
+        --accent: #e76f51;
+        --background: #f7f9fc;
+        --text: #333333;
+        --muted: #666666;
+        --border: #e2e8f0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.7;
+    }
+
+    a {
+        color: var(--secondary);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 25px;
+    }
+
+    header {
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 0;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .site-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    nav a {
+        margin-left: 25px;
+        color: var(--text);
+        font-size: 0.95rem;
+    }
+
+    /* Hero */
+
+    .hero {
+        background: linear-gradient(135deg, #1d3557, #457b9d);
+        color: white;
+        padding: 75px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.7rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        max-width: 900px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 850px;
+        color: #e8f1f8;
+    }
+
+    .hero-meta {
+        margin-top: 25px;
+        font-size: 0.95rem;
+        color: #d4e5f1;
+    }
+
+    .hero-meta span {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    /* Sections */
+
+    .section {
+        padding: 55px 0;
+    }
+
+    .section h2 {
+        color: var(--primary);
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    .section h3 {
+        color: var(--primary);
+    }
+
+    .section p {
+        font-size: 1.05rem;
+    }
+
+    /* Overview */
+
+    .overview {
+        background: white;
+    }
+
+    .overview-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        align-items: start;
+    }
+
+    .info-card {
+        background: var(--background);
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+    }
+
+    .info-card h3 {
+        margin-top: 0;
+    }
+
+    .info-card ul {
+        padding-left: 20px;
+    }
+
+    /* Figures */
+
+    .figure {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    .figure img {
+        max-width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+    }
+
+    .figure-caption {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+
+    /* Contributions */
+
+    .contributions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        margin-top: 35px;
+    }
+
+    .contribution-card {
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        border-top: 4px solid var(--secondary);
+    }
+
+    .contribution-card h3 {
+        margin-top: 0;
+    }
+
+    .contribution-card p {
+        font-size: 0.98rem;
+    }
+
+    /* Methodology */
+
+    .method-section {
+        background: white;
+    }
+
+    .method-step {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 25px;
+        margin-bottom: 40px;
+        align-items: start;
+    }
+
+    .step-number {
+        width: 55px;
+        height: 55px;
+        background: var(--secondary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .method-step h3 {
+        margin-top: 0;
+    }
+
+    /* Applications */
+
+    .application-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .application-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .application-card img {
+        width: 100%;
+        display: block;
+    }
+
+    .application-content {
+        padding: 25px;
+    }
+
+    .application-content h3 {
+        margin-top: 0;
+    }
+
+    /* Results */
+
+    .results {
+        background: white;
+    }
+
+    .results-highlight {
+        background: #eaf3f8;
+        border-left: 5px solid var(--secondary);
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 5px;
+    }
+
+    /* Future */
+
+    .future-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .future-card {
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+    }
+
+    .future-card h3 {
+        margin-top: 0;
+    }
+
+    /* Publication */
+
+    .publication {
+        background: var(--primary);
+        color: white;
+        padding: 40px;
+        border-radius: 8px;
+    }
+
+    .publication h2 {
+        color: white;
+    }
+
+    .publication-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .publication-authors {
+        margin-top: 15px;
+    }
+
+    .publication-venue {
+        margin-top: 10px;
+        color: #d4e5f1;
+    }
+
+    .publication a {
+        color: #bde0fe;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+        .overview-grid,
+        .contributions,
+        .application-grid,
+        .future-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        nav a {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="container header-content">
+
+        <div class="site-name">
+            Troy McMahon
+        </div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/research">Research</a>
+            <a href="/publications">Publications</a>
+            <a href="/teaching">Teaching</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="container">
+
+        <h1>
+            Affordance Wayfields for Task and Motion Planning
+        </h1>
+
+        <p>
+            A framework for representing manipulation affordances
+            as objective functions over configuration space,
+            enabling robots to generate motions that accomplish
+            complex manipulation tasks.
+        </p>
+
+        <div class="hero-meta">
+            <span>Motion Planning</span>
+            <span>Robot Manipulation</span>
+            <span>Task and Motion Planning</span>
+            <span>Affordances</span>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- OVERVIEW -->
+
+<section class="section overview">
+    <div class="container">
+
+        <div class="overview-grid">
+
+            <div>
+
+                <h2>Overview</h2>
+
+                <p>
+                    Affordances describe the actions that an object
+                    or environment enables a robot to perform.
+                    They provide a natural representation for
+                    reasoning about how robots interact with the
+                    objects around them and can serve as an
+                    interface between high-level task planning
+                    and low-level motion planning.
+                </p>
+
+                <p>
+                    However, traditional affordance representations,
+                    such as affordance templates, often specify
+                    actions using a sequence of end-effector
+                    waypoints. These representations constrain
+                    the robot's motion only at selected points
+                    along a trajectory, making it difficult to
+                    specify complex motions, enforce constraints
+                    throughout a motion, or account for obstacles
+                    between waypoints.
+                </p>
+
+                <p>
+                    This research introduces <strong>affordance
+                    wayfields</strong>, a representation of
+                    manipulation actions as objective functions
+                    over robot configuration space. Rather than
+                    specifying a sequence of poses, an affordance
+                    wayfield defines regions that the robot
+                    must traverse to accomplish an action.
+                    The resulting objective function guides
+                    motion planning toward configurations
+                    that satisfy the desired affordance.
+                </p>
+
+                <p>
+                    By combining affordance wayfields with
+                    obstacle and constraint fields, robots
+                    can generate motions that execute complex
+                    manipulation actions while avoiding
+                    obstacles and satisfying motion constraints.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <h3>Research Focus</h3>
+
+                <ul>
+                    <li>Manipulation affordances</li>
+                    <li>Task and motion planning</li>
+                    <li>Configuration-space planning</li>
+                    <li>Gradient-based motion planning</li>
+                    <li>Constraint-aware planning</li>
+                    <li>Mobile manipulation</li>
+                </ul>
+
+                <h3>Robotic Platform</h3>
+
+                <p>
+                    Michigan Progress Fetch mobile manipulator
+                </p>
+
+                <h3>Applications</h3>
+
+                <ul>
+                    <li>Furniture assembly</li>
+                    <li>Tool manipulation</li>
+                    <li>Drawer opening and closing</li>
+                    <li>Object retrieval and placement</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTRIBUTIONS -->
+
+<section class="section">
+    <div class="container">
+
+        <h2>Research Contributions</h2>
+
+        <div class="contributions">
+
+            <div class="contribution-card">
+
+                <h3>Affordance Wayfields</h3>
+
+                <p>
+                    A new representation of manipulation
+                    affordances as objective functions over
+                    configuration space.
+                </p>
+
+                <p>
+                    Actions are represented through ordered
+                    regions that a robot must traverse,
+                    allowing the representation of complex
+                    motions that may revisit the same
+                    regions of space.
+                </p>
+
+            </div>
+
+
+            <div class="contribution-card">
+
+                <h3>Constraint-Aware Motion Planning</h3>
+
+                <p>
+                    Obstacle fields and additional motion
+                    constraints are incorporated into the
+                    affordance objective function.
+                </p>
+
+                <p>
+                    This allows motions to be generated
+                    while accounting for obstacles and
+                    constraints on the robot's configuration
+                    throughout the trajectory.
+                </p>
+
+            </div>
+
+
+            <div class="contribution-card">
+
+                <h3>Randomized Gradient Descent Planning</h3>
+
+                <p>
+                    A randomized gradient-descent planner
+                    generates motions by optimizing the
+                    affordance wayfield.
+                </p>
+
+                <p>
+                    The planner can generate complex
+                    trajectories through multiple regions
+                    and accommodate goals defined as
+                    regions rather than individual
+                    configurations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FIGURE PLACEHOLDER -->
+
+<section class="section method-section">
+    <div class="container">
+
+        <h2>Affordance Wayfields</h2>
+
+        <p>
+            An affordance wayfield describes the sequence
+            of regions a robot must traverse to execute
+            a manipulation action. Each region defines
+            a portion of configuration space associated
+            with a particular stage of the action.
+        </p>
+
+        <p>
+            The cost associated with a configuration
+            reflects its distance to the next region
+            in the sequence. As the robot traverses
+            a region, the objective function advances
+            to the subsequent region, allowing the
+            representation to capture multi-stage
+            actions and motions that revisit portions
+            of configuration space.
+        </p>
+
+        <div class="figure">
+
+            <!-- Replace with the relevant figure from the paper -->
+
+            <img src="images/wayfield-illustration.png"
+                 alt="Illustration of an affordance wayfield">
+
+            <div class="figure-caption">
+                Affordance wayfields represent manipulation
+                actions through ordered regions of configuration
+                space that guide the robot toward completing
+                an action.
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- METHODOLOGY -->
+
+<section class="section">
+    <div class="container">
+
+        <h2>Planning Framework</h2>
+
+        <p>
+            The framework combines affordance objective
+            functions with obstacle representations
+            and a randomized gradient-descent planner
+            to generate robot motions.
+        </p>
+
+
+        <div class="method-step">
+
+            <div class="step-number">1</div>
+
+            <div>
+
+                <h3>Define the Manipulation Affordance</h3>
+
+                <p>
+                    A manipulation action is specified
+                    through a sequence of regions that
+                    the robot must traverse.
+                    These regions can be defined in
+                    configuration space or workspace,
+                    depending on the relevant aspects
+                    of the action.
+                </p>
+
+                <p>
+                    For actions that primarily depend
+                    on end-effector motion, workspace
+                    regions can be used to define
+                    affordance wayfields.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="method-step">
+
+            <div class="step-number">2</div>
+
+            <div>
+
+                <h3>Construct the Affordance Objective</h3>
+
+                <p>
+                    The regions are used to construct
+                    an objective function over the
+                    robot's configuration space.
+                    The cost of a configuration is
+                    determined by its distance to
+                    the next required region.
+                </p>
+
+                <p>
+                    This formulation supports
+                    complex actions involving
+                    multiple stages and repeated
+                    traversal of regions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="method-step">
+
+            <div class="step-number">3</div>
+
+            <div>
+
+                <h3>Incorporate Obstacles and Constraints</h3>
+
+                <p>
+                    Obstacle fields and other
+                    configuration constraints
+                    are incorporated into the
+                    affordance objective.
+                </p>
+
+                <p>
+                    These additional fields
+                    penalize invalid configurations
+                    and guide the planner toward
+                    motions that satisfy the
+                    manipulation affordance
+                    while avoiding collisions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="method-step">
+
+            <div class="step-number">4</div>
+
+            <div>
+
+                <h3>Generate a Motion Plan</h3>
+
+                <p>
+                    A randomized gradient-descent
+                    planner optimizes the combined
+                    objective to generate a
+                    configuration-space trajectory
+                    that accomplishes the desired
+                    manipulation action.
+                </p>
+
+                <p>
+                    Unlike waypoint-based
+                    representations, the planner
+                    can optimize the entire
+                    trajectory and accommodate
+                    goal regions instead of
+                    requiring a single
+                    goal configuration.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- APPLICATIONS -->
+
+<section class="section method-section">
+    <div class="container">
+
+        <h2>Applications</h2>
+
+        <p>
+            Affordance wayfields were demonstrated
+            on complex manipulation tasks using
+            a mobile manipulator. The experiments
+            illustrate how affordance representations
+            can support multi-step tasks involving
+            interactions with different objects
+            and the environment.
+        </p>
+
+
+        <div class="application-grid">
+
+
+            <!-- TABLE ASSEMBLY -->
+
+            <div class="application-card">
+
+                <img src="images/table-assembly.png"
+                     alt="Robot assembling a table">
+
+                <div class="application-content">
+
+                    <h3>Table Assembly</h3>
+
+                    <p>
+                        The robot assembles a table by
+                        sequentially performing grasping,
+                        positioning, and screwing actions
+                        on individual table legs.
+                    </p>
+
+                    <p>
+                        The grasp affordance guides the
+                        robot toward an appropriate
+                        grasping region on the table leg.
+                        The positioning affordance
+                        aligns the leg with the
+                        corresponding screw hole.
+                        Finally, the screw affordance
+                        generates the rotational motion
+                        needed to attach the leg to
+                        the tabletop.
+                    </p>
+
+                    <p>
+                        These actions demonstrate how
+                        affordance wayfields can
+                        represent complex constrained
+                        motions that cannot easily
+                        be specified using
+                        end-effector waypoints.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOOL CHEST -->
+
+            <div class="application-card">
+
+                <img src="images/tool-chest.png"
+                     alt="Robot manipulating tools in a storage chest">
+
+                <div class="application-content">
+
+                    <h3>Tool Chest Manipulation</h3>
+
+                    <p>
+                        The robot performs a sequence
+                        of manipulation actions
+                        involving a storage chest
+                        and the objects stored
+                        inside it.
+                    </p>
+
+                    <p>
+                        Affordances include opening
+                        and closing drawers,
+                        picking and placing objects,
+                        and manipulating tools
+                        to perform specific actions.
+                    </p>
+
+                    <p>
+                        The framework allows
+                        affordances to be
+                        associated with objects
+                        and reused across
+                        different drawers and
+                        object configurations.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- RESULTS -->
+
+<section class="section results">
+    <div class="container">
+
+        <h2>Experimental Results</h2>
+
+        <p>
+            The experimental evaluation demonstrates
+            the ability of affordance wayfields
+            to generate motions for complex,
+            multi-step manipulation tasks
+            using a mobile manipulator.
+        </p>
+
+        <div class="results-highlight">
+
+            <h3>Key Findings</h3>
+
+            <ul>
+
+                <li>
+                    Affordance wayfields enable
+                    manipulation actions to be
+                    represented as objective
+                    functions over configuration
+                    space.
+                </li>
+
+                <li>
+                    The framework generates
+                    motions that satisfy
+                    affordance constraints
+                    while accounting for
+                    obstacles.
+                </li>
+
+                <li>
+                    Complex manipulation actions
+                    involving multiple stages
+                    can be represented without
+                    requiring a predefined
+                    sequence of end-effector
+                    waypoints.
+                </li>
+
+                <li>
+                    The approach supports
+                    manipulation goals defined
+                    as regions of configurations
+                    rather than individual
+                    target configurations.
+                </li>
+
+                <li>
+                    Real-world demonstrations
+                    show the applicability of
+                    affordance wayfields to
+                    table assembly and
+                    tool-chest manipulation.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FUTURE DIRECTIONS -->
+
+<section class="section">
+    <div class="container">
+
+        <h2>Future Research Directions</h2>
+
+        <p>
+            Affordance wayfields provide a foundation
+            for connecting task-level reasoning
+            with motion planning. Future work
+            can extend this representation
+            to more complex manipulation
+            tasks and more expressive
+            affordance models.
+        </p>
+
+        <div class="future-grid">
+
+            <div class="future-card">
+
+                <h3>Task and Motion Planning</h3>
+
+                <p>
+                    Integrate affordance wayfields
+                    with high-level task planning
+                    methods to automatically
+                    generate sequences of
+                    manipulation actions
+                    for complex tasks.
+                </p>
+
+            </div>
+
+
+            <div class="future-card">
+
+                <h3>Kinodynamic Affordances</h3>
+
+                <p>
+                    Incorporate robot and object
+                    dynamics into affordance
+                    motion planning to better
+                    predict the effects of
+                    manipulation actions
+                    involving physical
+                    interactions.
+                </p>
+
+            </div>
+
+
+            <div class="future-card">
+
+                <h3>Complex Manipulation</h3>
+
+                <p>
+                    Extend affordance
+                    representations to
+                    more complex motions
+                    involving multiple objects,
+                    articulated objects,
+                    and constrained
+                    manipulation.
+                </p>
+
+            </div>
+
+
+            <div class="future-card">
+
+                <h3>Reusable Affordance Models</h3>
+
+                <p>
+                    Develop reusable
+                    affordance representations
+                    that can be applied to
+                    different objects,
+                    environments, and
+                    manipulation tasks
+                    with minimal
+                    modification.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PUBLICATION -->
+
+<section class="section">
+    <div class="container">
+
+        <div class="publication">
+
+            <h2>Publication</h2>
+
+            <p class="publication-title">
+                Affordance Wayfields for Task and Motion Planning
+            </p>
+
+            <p class="publication-authors">
+                Troy McMahon, Odest Chadwicke Jenkins,
+                and Nancy Amato
+            </p>
+
+            <p class="publication-venue">
+                IEEE/RSJ International Conference on
+                Intelligent Robots and Systems (IROS), 2018
+            </p>
+
+            <p>
+                <a href="papers/affordance-wayfields.pdf">
+                    Paper PDF
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container">
+
+        <p>
+            © Troy McMahon |
+            Robotics, Motion Planning, and Artificial Intelligence
+        </p>
+
+    </div>
+</footer>
+
+</body>
+</html>
