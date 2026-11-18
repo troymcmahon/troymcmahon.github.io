@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Terrain-Aware Kinodynamic Motion Planning | Troy McMahon</title>
+
+<style>
+    :root {
+        --primary: #1d3557;
+        --secondary: #457b9d;
+        --accent: #e76f51;
+        --background: #f7f9fc;
+        --text: #333333;
+        --muted: #666666;
+        --border: #e2e8f0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.7;
+    }
+
+    a {
+        color: var(--secondary);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 25px;
+    }
+
+    header {
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 0;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .site-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    nav a {
+        margin-left: 25px;
+        color: var(--text);
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #1d3557, #457b9d);
+        color: white;
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.7rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        max-width: 900px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 850px;
+        color: #e8f1f8;
+    }
+
+    .hero-meta {
+        margin-top: 25px;
+        font-size: 0.95rem;
+        color: #d4e5f1;
+    }
+
+    .hero-meta span {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .section {
+        padding: 55px 0;
+    }
+
+    .section h2 {
+        color: var(--primary);
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    .section h3 {
+        color: var(--primary);
+        margin-top: 30px;
+    }
+
+    .section p {
+        font-size: 1.05rem;
+    }
+
+    .overview {
+        background: white;
+    }
+
+    .overview-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        align-items: start;
+    }
+
+    .info-card {
+        background: var(--background);
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+    }
+
+    .info-card h3 {
+        margin-top: 0;
+    }
+
+    .info-card ul {
+        padding-left: 20px;
+    }
+
+    .figure {
+        margin: 35px 0;
+        text-align: center;
+    }
+
+    .figure img {
+        max-width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+    }
+
+    .figure-caption {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+
+    .contributions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        margin-top: 35px;
+    }
+
+    .contribution-card {
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        border-top: 4px solid var(--secondary);
+    }
+
+    .contribution-card h3 {
+        margin-top: 0;
+    }
+
+    .contribution-card p {
+        font-size: 0.98rem;
+    }
+
+    .method-section {
+        background: white;
+    }
+
+    .method-step {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 25px;
+        margin-bottom: 35px;
+        align-items: start;
+    }
+
+    .step-number {
+        width: 55px;
+        height: 55px;
+        background: var(--secondary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .method-step h3 {
+        margin-top: 0;
+    }
+
+    .results-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 30px;
+    }
+
+    .results-card {
+        background: white;
+        padding: 25px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+    }
+
+    .results-card h3 {
+        margin-top: 0;
+    }
+
+    .results-highlight {
+        background: #eaf3f8;
+        border-left: 5px solid var(--secondary);
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 5px;
+    }
+
+    .future-work {
+        background: white;
+    }
+
+    .future-work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .future-card {
+        background: var(--background);
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+    }
+
+    .future-card h3 {
+        margin-top: 0;
+    }
+
+    .publication {
+        background: var(--primary);
+        color: white;
+        padding: 40px;
+        border-radius: 8px;
+    }
+
+    .publication h2 {
+        color: white;
+    }
+
+    .publication a {
+        color: #bde0fe;
+    }
+
+    .publication-title {
+        font-size: 1.15rem;
+        font-weight: bold;
+    }
+
+    .publication-authors {
+        margin-top: 10px;
+    }
+
+    .publication-venue {
+        margin-top: 10px;
+        color: #d4e5f1;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+        .overview-grid,
+        .contributions,
+        .results-grid,
+        .future-work-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        nav a {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="site-name">Troy McMahon</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/research">Research</a>
+            <a href="/publications">Publications</a>
+            <a href="/teaching">Teaching</a>
+        </nav>
+    </div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="container">
+
+        <h1>
+            Terrain-Aware Kinodynamic Motion Planning
+            for Off-Road Robots
+        </h1>
+
+        <p>
+            Learning terrain-aware controllers and cost-to-go models
+            to improve sampling-based motion planning for robots
+            navigating physically simulated, uneven terrain.
+        </p>
+
+        <div class="hero-meta">
+            <span>Kinodynamic Motion Planning</span>
+            <span>Machine Learning</span>
+            <span>Off-Road Robotics</span>
+            <span>Physics-Based Simulation</span>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- OVERVIEW -->
+
+<section class="section overview">
+    <div class="container">
+
+        <div class="overview-grid">
+
+            <div>
+                <h2>Overview</h2>
+
+                <p>
+                    Motion planning for autonomous vehicles operating
+                    over uneven terrain presents significant challenges.
+                    Hills, pits, and other terrain features influence
+                    robot dynamics, making the effects of a control
+                    input difficult to predict. These interactions
+                    depend on both the geometry of the terrain and
+                    the physical characteristics of the robot.
+                </p>
+
+                <p>
+                    Physics-based simulation provides a powerful
+                    framework for modeling these interactions,
+                    but simulation is computationally expensive.
+                    Consequently, kinodynamic motion planners must
+                    minimize the number of simulation calls required
+                    to find feasible and high-quality trajectories.
+                </p>
+
+                <p>
+                    This work develops a terrain-aware planning
+                    framework that integrates learned controllers
+                    with sampling-based kinodynamic planning.
+                    The controller uses information about the
+                    robot's local terrain to generate controls
+                    that move the robot toward a desired state.
+                    Learned cost-to-go functions and a terrain-aware
+                    wavefront guide the planner toward promising
+                    regions of the environment.
+                </p>
+
+                <p>
+                    The resulting framework improves the practical
+                    efficiency of planning in physically simulated
+                    terrain environments while producing lower-cost
+                    solutions than traditional sampling-based
+                    approaches.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Research Focus</h3>
+
+                <ul>
+                    <li>Kinodynamic motion planning</li>
+                    <li>Learning-based control</li>
+                    <li>Terrain-aware planning</li>
+                    <li>Sampling-based planning</li>
+                    <li>Physics-based simulation</li>
+                    <li>Autonomous off-road vehicles</li>
+                </ul>
+
+                <h3>Robotic Systems</h3>
+
+                <p>
+                    Wheeled all-terrain vehicles with first-order
+                    and second-order dynamics.
+                </p>
+
+                <h3>Simulation</h3>
+
+                <p>
+                    Physics-based simulation using the Bullet
+                    physics engine.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- MAIN CONTRIBUTIONS -->
+
+<section class="section">
+    <div class="container">
+
+        <h2>Research Contributions</h2>
+
+        <div class="contributions">
+
+            <div class="contribution-card">
+                <h3>Terrain-Aware Learned Controller</h3>
+
+                <p>
+                    A learned controller generates controls for
+                    reaching local goals while incorporating
+                    information about the slope of the terrain
+                    surrounding the robot.
+                </p>
+
+                <p>
+                    The controller is trained over planar terrains
+                    with varying inclines and can generalize to
+                    unseen terrain conditions during planning.
+                </p>
+            </div>
+
+            <div class="contribution-card">
+                <h3>Learned Cost-to-Go Function</h3>
+
+                <p>
+                    A neural network predicts the expected cost
+                    of reaching a target state using a learned
+                    controller. This estimate provides guidance
+                    for selecting promising nodes during
+                    kinodynamic planning.
+                </p>
+
+                <p>
+                    The model is trained using example trajectories,
+                    allowing the approach to be applied when an
+                    analytical model of the robot is unavailable.
+                </p>
+            </div>
+
+            <div class="contribution-card">
+                <h3>Terrain-Aware Wavefront</h3>
+
+                <p>
+                    A wavefront function integrates the learned
+                    cost-to-go model over a discretized
+                    workspace to generate local goals for the
+                    planner.
+                </p>
+
+                <p>
+                    By accounting for terrain-dependent traversal
+                    costs, the wavefront guides the planner toward
+                    efficient and dynamically reachable paths.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- METHODOLOGY -->
+
+<section class="section method-section">
+    <div class="container">
+
+        <h2>Planning Framework</h2>
+
+        <p>
+            The proposed framework combines offline learning
+            with online sampling-based motion planning.
+            The learned models are integrated into a tree-based
+            kinodynamic planner, allowing the planner to explore
+            the state space while taking terrain characteristics
+            into account.
+        </p>
+
+
+        <div class="method-step">
+
+            <div class="step-number">1</div>
+
+            <div>
+                <h3>Learn a Terrain-Aware Controller</h3>
+
+                <p>
+                    A reinforcement learning-based controller
+                    receives the robot's current state, a local
+                    terrain normal, and a target state. It predicts
+                    a control that moves the robot toward the
+                    target.
+                </p>
+
+                <p>
+                    The controller is trained using Soft Actor-Critic
+                    (SAC) and Hindsight Experience Replay (HER).
+                    Training begins with flat terrain and
+                    subsequently incorporates sloped terrain
+                    through an incremental curriculum.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="method-step">
+
+            <div class="step-number">2</div>
+
+            <div>
+                <h3>Learn Cost-to-Go Models</h3>
+
+                <p>
+                    Example trajectories generated by the learned
+                    controllers are used to train neural networks
+                    that estimate the cost of reaching a target
+                    state.
+                </p>
+
+                <p>
+                    Separate cost-to-go models are learned for
+                    flat and terrain-aware controllers. The
+                    flat-terrain model provides an optimistic
+                    estimate of the cost-to-go, while the
+                    terrain-aware model captures local terrain
+                    effects.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="method-step">
+
+            <div class="step-number">3</div>
+
+            <div>
+                <h3>Compute a Terrain-Aware Wavefront</h3>
+
+                <p>
+                    A wavefront is computed over a discretized
+                    representation of the workspace using the
+                    terrain-aware cost-to-go model.
+                </p>
+
+                <p>
+                    The wavefront provides local goals that
+                    account for terrain difficulty, allowing
+                    the controller to make progress toward the
+                    global goal along efficient routes.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="method-step">
+
+            <div class="step-number">4</div>
+
+            <div>
+                <h3>Integrate with Sampling-Based Planning</h3>
+
+                <p>
+                    During planning, the planner selects a node
+                    for expansion using the learned cost-to-go
+                    heuristic. The wavefront generates a local
+                    goal, and the terrain-aware controller
+                    produces a candidate control.
+                </p>
+
+                <p>
+                    The resulting motion is propagated through
+                    the physics simulator. Collision-free
+                    trajectories are added to the planning tree,
+                    allowing the planner to incrementally explore
+                    the reachable state space.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- EXPERIMENTS -->
+
+<section class="section">
+    <div class="container">
+
+        <h2>Experimental Evaluation</h2>
+
+        <p>
+            The proposed framework was evaluated using
+            physically simulated models of a four-wheeled
+            Segway RMP 440 LE operating over a variety
+            of uneven terrains. Both first-order and
+            second-order dynamics were considered.
+        </p>
+
+        <p>
+            Experiments evaluated the performance of
+            terrain-aware controllers and wavefront-based
+            planning across environments containing hills,
+            pits, multiple hills, and more complex terrain
+            features.
+        </p>
+
+        <div class="results-grid">
+
+            <div class="results-card">
+                <h3>Terrain Environments</h3>
+
+                <p>
+                    The evaluation included synthetic terrain
+                    environments such as:
+                </p>
+
+                <ul>
+                    <li>Hill</li>
+                    <li>Pit</li>
+                    <li>Two Hills</li>
+                    <li>Cone</li>
+                    <li>Many Hills</li>
+                </ul>
+
+                <p>
+                    The framework was also evaluated in a
+                    realistic gravel-pit environment constructed
+                    using lidar data.
+                </p>
+            </div>
+
+            <div class="results-card">
+                <h3>Evaluation Metrics</h3>
+
+                <ul>
+                    <li>Planning success rate</li>
+                    <li>Solution cost</li>
+                    <li>Planning efficiency</li>
+                    <li>Performance across terrain difficulty</li>
+                    <li>Comparison between controller variants</li>
+                </ul>
+
+                <p>
+                    Solution cost was measured using trajectory
+                    duration, with normalized costs used to
+                    compare solution quality across problems.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="results-highlight">
+
+            <h3>Key Results</h3>
+
+            <p>
+                Learned controllers consistently outperformed
+                traditional sampling-based planning approaches
+                in both success rate and solution quality.
+                Incorporating a terrain-aware wavefront
+                enabled planners to find solutions more
+                consistently and efficiently than approaches
+                using random local goals.
+            </p>
+
+            <p>
+                The terrain-aware controller was particularly
+                effective in difficult environments where
+                terrain features significantly influenced
+                vehicle motion. An incremental training
+                strategy, in which the controller was first
+                trained on flat terrain and then exposed to
+                sloped environments, provided particularly
+                strong performance.
+            </p>
+
+            <p>
+                For more challenging second-order systems,
+                terrain-aware methods substantially improved
+                solution quality and planning success
+                compared with traditional baselines.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FUTURE RESEARCH -->
+
+<section class="section future-work">
+    <div class="container">
+
+        <h2>Future Research Directions</h2>
+
+        <p>
+            This research establishes a foundation for
+            learning-based kinodynamic planning over
+            physically simulated terrains. Several
+            directions can extend this framework toward
+            larger environments, more complex terrain,
+            and real-world robotic applications.
+        </p>
+
+        <div class="future-work-grid">
+
+            <div class="future-card">
+                <h3>Local Terrain Planning</h3>
+
+                <p>
+                    Develop planners that operate within
+                    a local window of high-resolution terrain
+                    surrounding the robot while using a
+                    high-level representation of the
+                    environment to generate local goals.
+                </p>
+
+                <p>
+                    This approach can reduce simulation
+                    requirements and enable planning over
+                    larger environments with higher
+                    terrain resolution.
+                </p>
+            </div>
+
+            <div class="future-card">
+                <h3>Learned Local-Goal Generation</h3>
+
+                <p>
+                    Investigate reinforcement learning-based
+                    methods for generating local goals
+                    directly from the robot's state and
+                    global objective.
+                </p>
+
+                <p>
+                    Such approaches could provide an
+                    alternative to terrain-aware wavefronts,
+                    reducing the computational cost of
+                    preprocessing while retaining
+                    effective planner guidance.
+                </p>
+            </div>
+
+            <div class="future-card">
+                <h3>Terrain Type Awareness</h3>
+
+                <p>
+                    Extend terrain-aware controllers to
+                    account for different terrain materials
+                    and surface properties, including
+                    pavement, grass, sand, and other
+                    unstructured terrain.
+                </p>
+
+                <p>
+                    Incorporating terrain type alongside
+                    slope information could improve
+                    predictions of robot motion in
+                    heterogeneous environments.
+                </p>
+            </div>
+
+            <div class="future-card">
+                <h3>Planning for New Robotic Systems</h3>
+
+                <p>
+                    Extend terrain-aware planning to
+                    more complex robotic platforms,
+                    including legged robots and
+                    unconventional robotic systems.
+                </p>
+
+                <p>
+                    These extensions could enable
+                    kinodynamic planning in environments
+                    where robot-terrain interactions
+                    are even more complex.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PUBLICATION -->
+
+<section class="section">
+    <div class="container">
+
+        <div class="publication">
+
+            <h2>Publication</h2>
+
+            <p class="publication-title">
+                Terrain-Aware Learned Controllers for
+                Kinodynamic Planning over Physically
+                Simulated Terrains
+            </p>
+
+            <p class="publication-authors">
+                Troy McMahon, Aravind Sivaramakrishnan,
+                Kushal Kedia, Edgar Granados, and
+                Kostas E. Bekris
+            </p>
+
+            <p class="publication-venue">
+                IEEE/RSJ International Conference on
+                Intelligent Robots and Systems (IROS), 2021
+            </p>
+
+            <p>
+                <a href="#">
+                    Paper PDF
+                </a>
+                &nbsp; | &nbsp;
+                <a href="#">
+                    Project Repository
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <p>
+            © Troy McMahon |
+            Robotics, Motion Planning, and Artificial Intelligence
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
