@@ -4,129 +4,1266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Reachable Volumes | Troy McMahon</title>
+
+    <meta name="description"
+          content="Reachable Volumes: geometric representations and sampling-based motion planning for high-degree-of-freedom robots and constrained systems.">
+
+    <style>
+
+        /* General Layout */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            margin: 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 30px;
+            background: white;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #183153;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #183153;
+            border-bottom: 2px solid #e5e9ef;
+            padding-bottom: 10px;
+            margin-top: 50px;
+        }
+
+        h3 {
+            color: #31577e;
+            margin-top: 30px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #286090;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Project Header */
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .metadata {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .hero {
+            margin: 30px 0;
+        }
+
+        .hero img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+
+        /* Figures */
+
+        figure {
+            margin: 35px 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+
+        /* Highlights */
+
+        .highlight {
+            background: #f0f4f8;
+            border-left: 5px solid #31577e;
+            padding: 20px 25px;
+            margin: 30px 0;
+        }
+
+        .results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .result-card {
+            background: #f0f4f8;
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #183153;
+            display: block;
+        }
+
+        .result-description {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+
+        /* Research Contributions */
+
+        .contribution {
+            margin: 30px 0;
+        }
+
+        .contribution h3 {
+            margin-bottom: 10px;
+        }
+
+
+        /* Video */
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        /* Publications */
+
+        .publication {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 3px solid #d5dce5;
+            background: #fafafa;
+        }
+
+        .publication-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .publication-details {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+
+        /* Footer */
+
+        footer {
+            border-top: 1px solid #ddd;
+            margin-top: 60px;
+            padding-top: 25px;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+
+        /* Responsive Design */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 25px 18px;
+            }
+
+            h1 {
+                font-size: 1.9em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <main>
+<div class="container">
 
-        <h1>Reachable Volumes for Robotic Manipulation</h1>
 
-        <p>
-            <strong>Research Area:</strong>
-            Robotics, Motion Planning, Computational Geometry
+    <!-- Project Header -->
+
+    <header>
+
+        <h1>Reachable Volumes</h1>
+
+        <p class="subtitle">
+            Sampling-Based Motion Planning for High-Degree-of-Freedom
+            Robots and Constrained Systems
         </p>
 
-        <hr>
+        <div class="metadata">
+
+            <strong>Research Areas:</strong>
+            Robotics, Motion Planning, Computational Geometry,
+            Manipulation, Constrained Systems
+
+        </div>
+
+    </header>
+
+
+    <!-- Main Project Image -->
+
+    <figure class="hero">
+
+        <img src="images/reachable-volumes-main.png"
+             alt="Visualization of reachable volumes for a robotic system">
+
+        <figcaption>
+            Reachable volumes represent the regions of space that
+            individual joints and end effectors can reach while
+            satisfying the constraints of a robotic system.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- Overview -->
+
+    <section>
 
         <h2>Overview</h2>
 
         <p>
-            Robotic manipulation requires determining whether a robot
-            can reach a desired position and orientation while satisfying
-            its kinematic constraints. This becomes particularly
-            challenging for robots with many degrees of freedom, where
-            traditional approaches to reachability analysis can become
-            computationally expensive.
+
+            Motion planning for robots with many degrees of freedom
+            and spatial constraints is computationally challenging.
+            Traditional sampling-based planning methods generate
+            configurations throughout the robot's configuration
+            space, but the probability of generating configurations
+            that satisfy complex spatial constraints can become
+            extremely small.
+
         </p>
 
         <p>
-            My research on <strong>Reachable Volumes</strong> investigates
-            geometric representations of robot reachability to facilitate
-            efficient motion planning for manipulation tasks. By combining
-            computational geometry with sampling-based planning, this
-            approach provides tools for reasoning about the configurations
-            and workspace regions accessible to a robotic manipulator.
+
+            My research introduced <strong>Reachable Volumes</strong>,
+            a geometric representation of the regions that individual
+            joints and end effectors can reach while satisfying
+            constraints imposed by the robot and its environment.
+
+            By representing reachability geometrically, this
+            framework transforms constrained motion planning into
+            a sampling problem in a new planning space, called
+            <strong>RV-space</strong>, where generated samples
+            naturally satisfy the constraints.
+
         </p>
 
-        <h2>Research Objectives</h2>
+        <p>
+
+            This approach enables sampling-based motion planning
+            algorithms to efficiently solve problems involving
+            high-degree-of-freedom robots, articulated linkages,
+            closed-chain systems, and robots with complex spatial
+            constraints.
+
+        </p>
+
+
+        <div class="highlight">
+
+            <strong>Research Contribution:</strong>
+
+            Reachable Volumes provide a geometric framework for
+            representing robot reachability and generating
+            constraint-satisfying samples, enabling efficient
+            motion planning for systems that are difficult or
+            impractical to solve using conventional sampling-based
+            approaches.
+
+        </div>
+
+    </section>
+
+
+    <!-- Problem -->
+
+    <section>
+
+        <h2>The Problem</h2>
+
+        <p>
+
+            High-degree-of-freedom robots and constrained systems
+            present significant challenges for motion planning.
+
+            Constraints may require a robot to maintain contact
+            with a surface, keep joints within specified regions,
+            preserve closed-chain relationships, or satisfy
+            end-effector requirements.
+
+        </p>
+
+        <p>
+
+            These constraints often define a lower-dimensional
+            manifold within the robot's configuration space.
+
+            Randomly sampling configurations in the full
+            configuration space has little probability of producing
+            configurations that satisfy these constraints.
+
+            As the number of degrees of freedom increases,
+            this problem becomes increasingly difficult.
+
+        </p>
+
+
+        <figure>
+
+            <img src="images/reachable-volumes-problem.png"
+                 alt="Comparison between configuration space sampling and reachable volume sampling">
+
+            <figcaption>
+
+                Traditional configuration-space sampling can
+                generate invalid configurations when spatial
+                constraints are present. Reachable Volumes
+                restrict sampling to regions that satisfy
+                the constraints.
+
+            </figcaption>
+
+        </figure>
+
+    </section>
+
+
+    <!-- Reachable Volumes -->
+
+    <section>
+
+        <h2>Reachable Volumes</h2>
+
+        <p>
+
+            The reachable volume of a joint or end effector is
+            the region of space that it can reach while satisfying
+            the constraints imposed on the robot.
+
+            The reachable volumes of a robot collectively
+            describe the feasible spatial relationships between
+            its joints.
+
+        </p>
+
+        <p>
+
+            Reachable Volumes generalize traditional reachability
+            representations to accommodate complex robotic systems,
+            including linkages with planar, prismatic, and spherical
+            joints, closed chains, and tree-like robots.
+
+        </p>
+
+
+        <figure>
+
+            <img src="images/reachable-volumes-visualization.png"
+                 alt="Visualization of the reachable volumes of robotic joints">
+
+            <figcaption>
+
+                Visualization of reachable volumes illustrating
+                the spatial regions accessible to different
+                components of a robotic system.
+
+            </figcaption>
+
+        </figure>
+
+
+        <h3>RV-space</h3>
+
+        <p>
+
+            Reachable Volumes define a new planning space,
+            RV-space, in which the relative positions of
+            the robot's joints are represented through their
+            reachable volumes.
+
+            By sampling within these volumes, configurations
+            can be generated that automatically satisfy
+            spatial constraints.
+
+        </p>
+
+        <p>
+
+            This eliminates the need to repeatedly generate
+            random configurations in the full configuration
+            space and reject those that violate the constraints.
+
+        </p>
+
+    </section>
+
+
+    <!-- Methodology -->
+
+    <section>
+
+        <h2>Methodology</h2>
+
+
+        <div class="contribution">
+
+            <h3>1. Reachable Volume Computation</h3>
+
+            <p>
+
+                I developed algorithms for computing the
+                reachable volumes of robotic joints and
+                end effectors.
+
+                These algorithms use geometric operations
+                to propagate reachability through articulated
+                structures while incorporating spatial
+                constraints.
+
+            </p>
+
+            <p>
+
+                The framework supports complex robot
+                structures, including open chains,
+                closed chains, and tree-like systems.
+
+            </p>
+
+        </div>
+
+
+        <div class="contribution">
+
+            <h3>2. Reachable Volume Sampling</h3>
+
+            <p>
+
+                Reachable Volume sampling generates
+                configurations by iteratively sampling
+                the joints of a robot within their
+                respective reachable volumes.
+
+                Because each joint is sampled within
+                its feasible region, the resulting
+                configurations naturally satisfy
+                the spatial constraints.
+
+            </p>
+
+            <figure>
+
+                <img src="images/reachable-volume-sampling.png"
+                     alt="Reachable volume sampling process">
+
+                <figcaption>
+
+                    Reachable Volume sampling generates
+                    constraint-satisfying configurations
+                    through sequential sampling of
+                    reachable regions.
+
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+
+        <div class="contribution">
+
+            <h3>3. Reachable Volume Local Planning</h3>
+
+            <p>
+
+                I developed a local planner that connects
+                configurations through reachable volume
+                space.
+
+                The planner moves the joints through
+                reachable volume stepping, producing
+                paths that satisfy the spatial constraints
+                throughout the motion.
+
+            </p>
+
+            <p>
+
+                This is particularly important for
+                constrained systems such as closed-chain
+                robots, where conventional straight-line
+                interpolation in configuration space
+                may violate the constraints.
+
+            </p>
+
+            <figure>
+
+                <img src="images/reachable-volume-local-planner.png"
+                     alt="Reachable volume local planner connecting configurations">
+
+                <figcaption>
+
+                    Reachable Volume local planning
+                    generates constraint-satisfying
+                    paths between configurations.
+
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+
+        <div class="contribution">
+
+            <h3>4. Reachable Volume Distance Metric</h3>
+
+            <p>
+
+                I also developed a distance metric based on
+                the distances traversed by the joints in
+                reachable volume space.
+
+                This metric provides a more meaningful
+                measure of distance between configurations
+                for robots with complex spatial constraints
+                than traditional Euclidean distance in
+                configuration space.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RV Planner -->
+
+    <section>
+
+        <h2>Reachable Volume Motion Planning</h2>
+
+        <p>
+
+            The reachable volume framework provides
+            fundamental operations that can be integrated
+            into sampling-based motion planning algorithms.
+
+            These operations include reachable volume
+            sampling, local planning, and distance metrics.
+
+        </p>
+
+        <p>
+
+            By incorporating these operations into
+            probabilistic roadmaps (PRMs), the resulting
+            planners can efficiently generate roadmaps
+            containing feasible configurations and
+            constraint-satisfying paths.
+
+        </p>
+
+
+        <figure>
+
+            <img src="images/reachable-volume-planning.png"
+                 alt="Sampling based motion planning using reachable volumes">
+
+            <figcaption>
+
+                Sampling-based motion planning using
+                Reachable Volumes.
+
+            </figcaption>
+
+        </figure>
+
+    </section>
+
+
+    <!-- RVRRT -->
+
+    <section>
+
+        <h2>Reachable Volume RRT</h2>
+
+        <p>
+
+            An important extension of this research was
+            the development of <strong>Reachable Volume RRT
+            (RVRRT)</strong>, which extends the reachable
+            volume framework to tree-based sampling
+            algorithms such as Rapidly-Exploring Random
+            Trees.
+
+        </p>
+
+        <p>
+
+            RRTs traditionally expand trees by sampling
+            random configurations and moving toward
+            nearby samples.
+
+            For constrained systems, this process
+            frequently generates invalid configurations.
+
+            RVRRT addresses this challenge by using
+            reachable volume stepping to expand the
+            tree while maintaining the robot's
+            spatial constraints.
+
+        </p>
+
+
+        <figure>
+
+            <img src="images/rvrrt.png"
+                 alt="Reachable Volume RRT planning visualization">
+
+            <figcaption>
+
+                Reachable Volume RRT expands a planning
+                tree using reachable volume stepping
+                to generate feasible configurations.
+
+            </figcaption>
+
+        </figure>
+
+
+        <h3>Key Contributions</h3>
 
         <ul>
+
             <li>
-                Develop efficient geometric representations of robotic
-                reachability.
+                A reachable volume expansion strategy
+                for tree-based sampling planners.
             </li>
+
             <li>
-                Improve motion planning for high-degree-of-freedom
-                robotic manipulators.
+                A reachable volume stepping method
+                that generates nearby constraint-satisfying
+                configurations.
             </li>
+
             <li>
-                Support grasp planning and manipulation through
-                reachability analysis.
+                A distance metric for reachable volume
+                configurations.
             </li>
+
             <li>
-                Integrate reachability representations with
-                sampling-based motion planning algorithms.
+                A reachable volume local planner
+                for generating constraint-satisfying
+                paths.
             </li>
+
         </ul>
 
-        <h2>Approach</h2>
+    </section>
+
+
+    <!-- Experimental Results -->
+
+    <section>
+
+        <h2>Experimental Results</h2>
 
         <p>
-            Reachable Volumes explores the relationship between a
-            robot's configuration space and its reachable workspace.
-            Geometric representations of reachable regions can help
-            identify feasible manipulation configurations and reduce
-            the computational effort required during planning.
+
+            The Reachable Volume framework was evaluated
+            on a broad range of motion planning problems
+            involving open-chain robots, closed-chain
+            systems, and tree-like robots.
+
+            Experiments included robots with hundreds
+            and more than one thousand degrees of freedom.
+
         </p>
 
+
+        <div class="results">
+
+            <div class="result-card">
+
+                <span class="result-number">1,034</span>
+
+                <span class="result-description">
+
+                    Degrees of freedom demonstrated
+                    in reachable volume planning
+                    experiments
+
+                </span>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span class="result-number">134</span>
+
+                <span class="result-description">
+
+                    Degrees of freedom demonstrated
+                    by Reachable Volume RRT
+
+                </span>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span class="result-number">1000+</span>
+
+                <span class="result-description">
+
+                    Degrees of freedom addressed
+                    in constrained and articulated
+                    planning systems
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <h3>High-Degree-of-Freedom Systems</h3>
+
         <p>
-            This research combines computational geometry and
-            sampling-based planning to address the challenges of
-            planning for complex robotic systems.
+
+            Experiments demonstrated that reachable
+            volume sampling is effective for systems
+            with large numbers of degrees of freedom.
+
+            The framework was evaluated on chains,
+            closed-chain robots, and tree-like systems
+            across a variety of environments.
+
         </p>
+
+
+        <figure>
+
+            <img src="images/reachable-volumes-high-dof.png"
+                 alt="High degree of freedom robot motion planning">
+
+            <figcaption>
+
+                Reachable Volume planning applied
+                to high-degree-of-freedom robotic systems.
+
+            </figcaption>
+
+        </figure>
+
+
+        <h3>Constrained Motion Planning</h3>
+
+        <p>
+
+            Reachable Volume planners were evaluated
+            on problems involving closed chains and
+            spatial constraints.
+
+            The resulting samples and paths naturally
+            satisfy these constraints, allowing the
+            framework to address problems that are
+            difficult for conventional sampling-based
+            planners.
+
+        </p>
+
+
+        <figure>
+
+            <img src="images/reachable-volumes-closed-chain.png"
+                 alt="Closed chain robot motion planning using reachable volumes">
+
+            <figcaption>
+
+                Constrained motion planning for
+                closed-chain robotic systems.
+
+            </figcaption>
+
+        </figure>
+
+
+        <h3>Comparison with Existing Methods</h3>
+
+        <p>
+
+            Experimental results show that reachable
+            volume methods generate more valid samples
+            and produce more efficient roadmaps than
+            existing sampling-based approaches for
+            challenging high-dimensional problems.
+
+            Reachable Volume RRT was also shown to
+            solve several difficult planning problems
+            that conventional RRT and dynamic-domain
+            RRT methods could not solve.
+
+        </p>
+
+    </section>
+
+
+    <!-- Applications -->
+
+    <section>
 
         <h2>Applications</h2>
 
-        <ul>
-            <li>Robotic grasp planning</li>
-            <li>Industrial robotic manipulation</li>
-            <li>High-degree-of-freedom robotic systems</li>
-            <li>Motion planning for constrained manipulators</li>
-        </ul>
-
-        <h2>Results and Demonstrations</h2>
-
         <p>
-            Add figures and videos demonstrating the Reachable Volumes
-            representation and its application to robotic manipulation.
+
+            Reachable Volumes provide a general
+            framework for motion planning across
+            multiple robotic domains.
+
         </p>
 
-        <figure>
-            <img src="images/reachable-volumes-overview.png"
-                 alt="Visualization of robotic reachable volumes"
-                 width="700">
-            <figcaption>
-                Visualization of reachable volumes for robotic manipulation.
-            </figcaption>
-        </figure>
 
-        <figure>
-            <img src="images/reachable-volumes-example.png"
-                 alt="Example of reachable volume computation"
-                 width="700">
-            <figcaption>
-                Example of reachability analysis.
-            </figcaption>
-        </figure>
+        <h3>Robotic Manipulation</h3>
 
-        <h2>Publications</h2>
+        <p>
 
-        <ul>
-            <li>
-                Add publications related to Reachable Volumes here.
-            </li>
-        </ul>
+            Reachability representations can be used
+            to reason about the regions that robot
+            joints and end effectors can reach during
+            manipulation tasks.
+
+            This can support grasp planning,
+            constrained manipulation, and planning
+            for complex articulated systems.
+
+        </p>
+
+
+        <h3>Industrial Automation</h3>
+
+        <p>
+
+            Reachable Volumes can be used to determine
+            whether a robot can reach required
+            locations while maintaining constraints
+            imposed by tools, objects, and the
+            surrounding environment.
+
+        </p>
+
+
+        <h3>Computational Biology</h3>
+
+        <p>
+
+            High-degree-of-freedom articulated systems
+            are also found in computational biology.
+
+            Reachable Volume representations provide
+            a potential framework for motion planning
+            and sampling in problems involving
+            molecular structures and protein folding.
+
+        </p>
+
+
+        <h3>Reconfigurable and Folding Robots</h3>
+
+        <p>
+
+            Reachability representations can support
+            motion planning for folding and
+            reconfigurable robotic systems,
+            including robots with complex articulated
+            structures.
+
+        </p>
+
+    </section>
+
+
+    <!-- Future Work -->
+
+    <section>
+
+        <h2>Future Research Directions</h2>
+
+
+        <h3>Probabilistic Reachable Volumes</h3>
+
+        <p>
+
+            An important direction for future research
+            is the development of probabilistic
+            Reachable Volumes.
+
+            Rather than representing reachable
+            regions as deterministic geometric
+            volumes, probabilistic Reachable Volumes
+            would represent joint positions using
+            probability distributions while
+            maintaining the system's constraints.
+
+        </p>
+
+        <p>
+
+            This would enable motion planning
+            under uncertainty and provide a
+            framework for reasoning about
+            uncertainty in robot motion,
+            perception, and localization.
+
+        </p>
+
+
+        <h3>Planning Under Uncertainty</h3>
+
+        <p>
+
+            Probabilistic Reachable Volumes could
+            support belief-space planning and
+            uncertainty-aware motion planning
+            for robotic systems operating in
+            uncertain environments.
+
+        </p>
+
+
+        <h3>Applications to Medical Robotics</h3>
+
+        <p>
+
+            One potential application is medical
+            robotics, including needle steering
+            and other procedures where motion
+            must be planned under uncertainty
+            while satisfying spatial constraints.
+
+        </p>
+
+
+        <h3>Reachability for Robot Control</h3>
+
+        <p>
+
+            Reachable Volume visualizations can
+            provide useful feedback for robot
+            operators and support user-guided
+            motion planning.
+
+            Further development of these
+            representations could provide
+            intuitive interfaces for controlling
+            complex high-degree-of-freedom
+            robotic systems.
+
+        </p>
+
+    </section>
+
+
+    <!-- Related Projects -->
+
+    <section>
 
         <h2>Related Research</h2>
 
         <p>
-            <a href="wayfield.html">Wayfield</a> |
-            <a href="index.html">Back to Home</a>
+
+            Reachable Volumes form part of my
+            broader research program in
+            motion planning for complex
+            robotic systems.
+
         </p>
 
-    </main>
+        <ul>
+
+            <li>
+                <a href="grasping-on-the-move.html">
+                    Grasping on the Move
+                </a>
+                — Motion planning and visual servoing
+                for mobile manipulation.
+            </li>
+
+            <li>
+                <a href="wayfield.html">
+                    Wayfields
+                </a>
+                — Affordance-based representations
+                for task and motion planning.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- Publications -->
+
+    <section>
+
+        <h2>Publications</h2>
+
+
+        <div class="publication">
+
+            <div class="publication-title">
+
+                Sampling-Based Motion Planning with Reachable
+                Volumes for High-Degree-of-Freedom Manipulators
+
+            </div>
+
+            <div class="publication-details">
+
+                Troy McMahon, Shawna Thomas, and Nancy M. Amato.
+
+                <em>
+                    The International Journal of Robotics Research,
+                    2018, 37(7): 779–817.
+                </em>
+
+                <br>
+
+                <a href="https://doi.org/10.1177/0278364918779555"
+                   target="_blank">
+
+                    DOI: 10.1177/0278364918779555
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="publication">
+
+            <div class="publication-title">
+
+                Reachable Volume RRT
+
+            </div>
+
+            <div class="publication-details">
+
+                Troy McMahon, Shawna Thomas, and Nancy M. Amato.
+
+                <em>
+                    IEEE International Conference on Robotics
+                    and Automation (ICRA), 2015,
+                    pp. 2977–2984.
+                </em>
+
+                <br>
+
+                <a href="https://doi.org/10.1109/ICRA.2015.7139607"
+                   target="_blank">
+
+                    DOI: 10.1109/ICRA.2015.7139607
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="publication">
+
+            <div class="publication-title">
+
+                Sampling-Based Motion Planning with Reachable Volumes:
+                Application to Manipulators and Closed Chain Systems
+
+            </div>
+
+            <div class="publication-details">
+
+                Troy McMahon, Shawna Thomas, and Nancy M. Amato.
+
+                <em>
+                    IEEE/RSJ International Conference on Intelligent
+                    Robots and Systems (IROS), 2014,
+                    pp. 3705–3712.
+                </em>
+
+                <br>
+
+                <a href="https://doi.org/10.1109/IROS.2014.6943082"
+                   target="_blank">
+
+                    DOI: 10.1109/IROS.2014.6943082
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="publication">
+
+            <div class="publication-title">
+
+                Sampling-Based Motion Planning with Reachable Volumes:
+                Theoretical Foundations
+
+            </div>
+
+            <div class="publication-details">
+
+                Troy McMahon, Shawna Thomas, and Nancy M. Amato.
+
+                <em>
+                    IEEE International Conference on Robotics
+                    and Automation (ICRA), 2014,
+                    pp. 6514–6521.
+                </em>
+
+                <br>
+
+                <a href="https://doi.org/10.1109/ICRA.2014.6907820"
+                   target="_blank">
+
+                    DOI: 10.1109/ICRA.2014.6907820
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="publication">
+
+            <div class="publication-title">
+
+                Manipulation Planning with Directed Reachable Volumes
+
+            </div>
+
+            <div class="publication-details">
+
+                Troy McMahon, Read Sandström, Shawna Thomas,
+                and Nancy M. Amato.
+
+                <em>
+                    IEEE/RSJ International Conference on Intelligent
+                    Robots and Systems (IROS), 2017,
+                    pp. 4026–4033.
+                </em>
+
+                <br>
+
+                <a href="https://doi.org/10.1109/IROS.2017.8206257"
+                   target="_blank">
+
+                    DOI: 10.1109/IROS.2017.8206257
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            <a href="index.html">
+                Back to Home
+            </a>
+
+            |
+
+            <a href="research.html">
+                Research
+            </a>
+
+        </p>
+
+        <p>
+
+            Troy A. McMahon
+
+            <br>
+
+            Robotics | Motion Planning | Computational Geometry
+
+        </p>
+
+    </footer>
+
+
+</div>
 
 </body>
+
 </html>
