@@ -254,7 +254,6 @@
 
     <!-- Main Project Image -->
 
-    <figure class="hero">
       <table style="width: 100%; border-collapse: separate; border-spacing: 10px;">
         <tr>
           <td style="width: 50%; text-align: center;">
@@ -267,13 +266,10 @@
       </table>
         
 
-        <figcaption>
+        <p>
             Reachable volumes represent the regions of space that
             individual joints and end effectors can reach while
             satisfying the constraints of a robotic system.
-        </figcaption>
-
-    </figure>
 
 
     <!-- Overview -->
@@ -519,11 +515,10 @@
 
                 <figcaption>
 
-                    Reachable Volume sampling generates
-                    constraint-satisfying configurations
-                    through sequential sampling of
-                    reachable regions.
-
+Generating a configuration for a chain robot. (a) Compute the reachable volume of the chain. (b) Set the placement of the end
+effector of the chain to be a random point from this volume. (c) Bisect the chain and compute intersection of the reachable volumes of
+the two pieces. (d) Set the midpoint joint of the bisected chain to be a random point from the intersection of these reachable volumes.
+(e), (f) Continue until all joints are placed.
                 </figcaption>
 
             </figure>
