@@ -227,26 +227,26 @@ Materials and Production, which was a graduate-level course designed to introduc
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>
         <td>
-            <img src="rv_wam_with_labels.png" alt="Image 1" width="200">
-            <h3>Reachable Volumes</h3>
+            <a href="ReachableVolumes.html"><img src="rv_wam_with_labels.png" alt="Image 1" width="200">
+              <h3>Reachable Volumes</h3></a>
         </td>
         <td>
-            <img src="kitting_cell.png" alt="Image 2" width="200">
-            <h3>Grasping on the move</h3>
+            <a href="GraspingOnTheMove.html"><img src="kitting_cell.png" alt="Image 2" width="200">
+              <h3>Grasping on the move</h3></a>a
         </td>
         <td>
-            <img src="robot_at_start_no_path.png" alt="Image 3" width="200">
-            <h3>Off-road robots</h3>
+            <a href="OffRoadVehicles.html"><img src="robot_at_start_no_path.png" alt="Image 3" width="200">
+              <h3>Off-road robots</h3></a>a>
         </td>
     </tr>        
     <tr>    
         <td>
-            <img src="drawer.jpg" alt="Image 4" width="200">
-            <h3>Wayfields for task an motion planning</h3>
+            <a href="Wayfields.html"><img src="drawer.jpg" alt="Image 4" width="200">
+              <h3>Wayfields for task an motion planning</h3></a>a>
         </td>
         <td>
-            <img src="LocalRand.jpg" alt="Image 5" width="200">
-            <h3>Motion planning fundamentals</h3>
+            <a href="Localrand.html"><img src="LocalRand.jpg" alt="Image 5" width="200">
+              <h3>Motion planning fundamentals</h3></a>a>
         </td>
         <td>
         
