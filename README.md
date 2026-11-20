@@ -232,21 +232,21 @@ Materials and Production, which was a graduate-level course designed to introduc
         </td>
         <td>
             <a href="GraspingOnTheMove.html"><img src="kitting_cell.png" alt="Image 2" width="200">
-              <h3>Grasping on the move</h3></a>a
+              <h3>Grasping on the move</h3></a>
         </td>
         <td>
             <a href="OffRoadVehicles.html"><img src="robot_at_start_no_path.png" alt="Image 3" width="200">
-              <h3>Off-road robots</h3></a>a>
+              <h3>Off-road robots</h3></a>
         </td>
     </tr>        
     <tr>    
         <td>
             <a href="Wayfields.html"><img src="drawer.jpg" alt="Image 4" width="200">
-              <h3>Wayfields for task an motion planning</h3></a>a>
+              <h3>Wayfields for task an motion planning</h3></a>
         </td>
         <td>
             <a href="Localrand.html"><img src="LocalRand.jpg" alt="Image 5" width="200">
-              <h3>Motion planning fundamentals</h3></a>a>
+              <h3>Motion planning fundamentals</h3></a>
         </td>
         <td>
         
